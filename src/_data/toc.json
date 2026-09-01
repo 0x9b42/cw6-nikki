@@ -1,0 +1,643 @@
+{
+  "INTRO": {
+    "symbol": null,
+    "title": "Introduction",
+    "para_range": [0, 8],
+    "sub": []
+  },
+  "CH01": {
+    "symbol": "I",
+    "title": "THE PROBLEM OF TYPES IN THE HISTORY OF CLASSICAL AND MEDIEVAL THOUGHT",
+    "para_range": [8, 100],
+    "sub": [
+      {
+        "1": {
+          "title": "PSYCHOLOGY IN THE CLASSICAL AGE: THE GNOSTICS, TERTULLIAN, ORIGEN",
+          "para_range": [8, 30],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "THE THEOLOGICAL DISPUTES OF THE ANCIENT CHURCH",
+          "para_range": [31, 34],
+          "sub": []
+        }
+      },
+      {
+        "3": {
+          "title": "THE PROBLEM OF TRANSUBSTANTIATION",
+          "para_range": [35, 39],
+          "sub": []
+        }
+      },
+      {
+        "4": {
+          "title": "NOMINALISM AND REALISM",
+          "para_range": [40, 95],
+          "sub": [
+            {
+              "a": {
+                "title": "The Problem of Universals in Antiquity",
+                "para_range": [42, 55],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Problem of Universals in Scholasticism",
+                "para_range": [56, 67],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "Abelard's Attempt at Conciliation",
+                "para_range": [68, 95],
+                "sub": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "5": {
+          "title": "THE HOLY COMMUNION CONTROVERSY BETWEEN LUTHER AND ZWINGLI",
+          "para_range": [96, 100],
+          "sub": []
+        }
+      }
+    ]
+  },
+  "CH02": {
+    "symbol": "II",
+    "title": "Schiller's Ideas on the Type Problem",
+    "para_range": [101, 222],
+    "sub": [
+      {
+        "1": {
+          "title": "LETTERS ON THE AESTHETIC EDUCATION OF MAN",
+          "para_range": [101, 212],
+          "sub": [
+            {
+              "a": {
+                "title": "The Superior and the Inferior Functions",
+                "para_range": [101, 151],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "Concerning the Basic Instincts",
+                "para_range": [152, 212],
+                "sub": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "2": {
+          "title": "A DISCUSSION ON NAÏVE AND SENTIMENTAL POETRY",
+          "para_range": [213, 222],
+          "sub": [
+            {
+              "a": {
+                "title": "The Naïve Attitude",
+                "para_range": [215, 216],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Sentimental Attitude",
+                "para_range": [217, 219],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "The Idealist and the Realist",
+                "para_range": [220, 222],
+                "sub": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "CH03": {
+    "symbol": "III",
+    "title": "The Apollinian and the Dionysian",
+    "para_range": [223, 242],
+    "sub": []
+  },
+  "CH04": {
+    "symbol": "IV",
+    "title": "The Type Problem in Human Character",
+    "para_range": [243, 274],
+    "sub": [
+      {
+        "1": {
+          "title": "GENERAL REMARKS ON JORDAN'S TYPES",
+          "para_range": [243, 254],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "SPECIAL DESCRIPTION AND CRITICISM OF JORDAN'S TYPES",
+          "para_range": [255, 274],
+          "sub": [
+            {
+              "a": {
+                "title": "The Introverted Woman",
+                "para_range": [256, 259],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Extraverted Woman",
+                "para_range": [260, 264],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "The Extraverted Man",
+                "para_range": [265, 268],
+                "sub": []
+              }
+            },
+            {
+              "d": {
+                "title": "The Introverted Man",
+                "para_range": [269, 274],
+                "sub": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "CH05": {
+    "symbol": "V",
+    "title": "The Type Problem in Poetry",
+    "para_range": [275, 460],
+    "sub": [
+      {
+        "1": {
+          "title": "INTRODUCTORY REMARKS ON SPITTELER'S TYPOLOGY",
+          "para_range": [275, 287],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "A COMPARISON OF SPITTELER'S WITH GOETHE'S PROMETHEUS",
+          "para_range": [288, 317],
+          "sub": []
+        }
+      },
+      {
+        "3": {
+          "title": "THE SIGNIFICANCE OF THE UNITING SYMBOL",
+          "para_range": [318, 374],
+          "sub": [
+            {
+              "a": {
+                "title": "The Brahmanic Conception of the Problem of Opposites",
+                "para_range": [327, 330],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Brahmanic Conception of the Uniting Symbol",
+                "para_range": [331, 347],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "The Uniting Symbol as the Principle of Dynamic Regulation",
+                "para_range": [348, 357],
+                "sub": []
+              }
+            },
+            {
+              "d": {
+                "title": "The Uniting Symbol in Chinese Philosophy",
+                "para_range": [358, 374],
+                "sub": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "4": {
+          "title": "THE RELATIVITY OF THE SYMBOL",
+          "para_range": [375, 433],
+          "sub": [
+            {
+              "a": {
+                "title": "The Worship of Woman and the Worship of the Soul",
+                "para_range": [375, 406],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Relativity of the God-concept in Meister Eckhart",
+                "para_range": [407, 433],
+                "sub": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "5": {
+          "title": "THE NATURE OF THE UNITING SYMBOL IN SPITTELER",
+          "para_range": [434, 460],
+          "sub": []
+        }
+      }
+    ]
+  },
+  "CH06": {
+    "symbol": "VI",
+    "title": "The Type Problem in Psychopathology",
+    "para_range": [461, 483],
+    "sub": []
+  },
+  "CH07": {
+    "symbol": "VII",
+    "title": "The Type Problem in Aesthetics",
+    "para_range": [484, 504],
+    "sub": []
+  },
+  "CH08": {
+    "symbol": "VIII",
+    "title": "The Type Problem in Modern Philosophy",
+    "para_range": [505, 541],
+    "sub": [
+      {
+        "1": {
+          "title": "WILLIAM JAMES' TYPES",
+          "para_range": [505, 517],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "THE CHARACTERISTIC PAIRS OF OPPOSITES IN JAMES' TYPES",
+          "para_range": [518, 537],
+          "sub": [
+            {
+              "a": {
+                "title": "Rationalism versus Empiricism",
+                "para_range": [518, 522],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "Intellectualism versus Sensationalism",
+                "para_range": [523],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "Idealism versus Materialism",
+                "para_range": [524, 525],
+                "sub": []
+              }
+            },
+            {
+              "d": {
+                "title": "Optimism versus Pessimism",
+                "para_range": [527, 527],
+                "sub": []
+              }
+            },
+            {
+              "e": {
+                "title": "Religiousness versus Irreligiousness",
+                "para_range": [528, 530],
+                "sub": []
+              }
+            },
+            {
+              "f": {
+                "title": "Indeterminism versus Determinism",
+                "para_range": [531, 535],
+                "sub": []
+              }
+            },
+            {
+              "g": {
+                "title": "Monism versus Pluralism",
+                "para_range": [536],
+                "sub": []
+              }
+            },
+            {
+              "h": {
+                "title": "Dogmatism versus Scepticism",
+                "para_range": [537],
+                "sub": []
+              }
+            }
+          ]
+        }
+      },
+      {
+        "3": {
+          "title": "GENERAL CRITICISM OF JAMES' TYPOLOGY",
+          "para_range": [538, 541],
+          "sub": []
+        }
+      }
+    ]
+  },
+  "CH09": {
+    "symbol": "IX",
+    "title": "The Type Problem in Biography",
+    "para_range": [542, 555],
+    "sub": []
+  },
+  "CH10": {
+    "symbol": "X",
+    "title": "General Description of the Types",
+    "para_range": [556, 671],
+    "sub": [
+      {
+        "1": {
+          "title": "INTRODUCTION",
+          "para_range": [556, 561],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "THE EXTRAVERTED TYPE",
+          "para_range": [562, 619],
+          "sub": [
+            {
+              "a": {
+                "title": "The General Attitude of Consciousness",
+                "para_range": [563, 567],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Attitude of the Unconscious",
+                "para_range": [568, 576],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "The Peculiarities of the Basic Psychological Functions in the Extraverted Attitude",
+                "para_range": [577, 619],
+                "sub": [
+                  {
+                    "Thinking": {
+                      "title": "Thinking",
+                      "para_range": [577, 583],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Extraverted Thinking Type": {
+                      "title": "The Extraverted Thinking Type",
+                      "para_range": [584, 594],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Feeling": {
+                      "title": "Feeling",
+                      "para_range": [595, 596],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Extraverted Feeling Type": {
+                      "title": "The Extraverted Feeling Type",
+                      "para_range": [597, 600],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Summary of the Extraverted Rational Types": {
+                      "title": "Summary of the Extraverted Rational Types",
+                      "para_range": [601, 603],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Sensation": {
+                      "title": "Sensation",
+                      "para_range": [604, 605],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Extraverted Sensation Type": {
+                      "title": "The Extraverted Sensation Type",
+                      "para_range": [606, 609],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Intuition": {
+                      "title": "Intuition",
+                      "para_range": [610, 612],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Extraverted Intuitive Type": {
+                      "title": "The Extraverted Intuitive Type",
+                      "para_range": [613, 615],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Summary of the Extraverted Irrational Types": {
+                      "title": "Summary of the Extraverted Irrational Types",
+                      "para_range": [616, 619],
+                      "sub": []
+                    }
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      },
+      {
+        "3": {
+          "title": "THE INTROVERTED TYPE",
+          "para_range": [620, 671],
+          "sub": [
+            {
+              "a": {
+                "title": "The General Attitude of Consciousness",
+                "para_range": [620, 625],
+                "sub": []
+              }
+            },
+            {
+              "b": {
+                "title": "The Attitude of the Unconscious",
+                "para_range": [626, 627],
+                "sub": []
+              }
+            },
+            {
+              "c": {
+                "title": "The Peculiarities of the Basic Psychological Functions in the Introverted Attitude",
+                "para_range": [628, 667],
+                "sub": [
+                  {
+                    "Thinking": {
+                      "title": "Thinking",
+                      "para_range": [628, 631],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Introverted Thinking Type": {
+                      "title": "The Introverted Thinking Type",
+                      "para_range": [632, 637],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Feeling": {
+                      "title": "Feeling",
+                      "para_range": [638, 639],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Introverted Feeling Type": {
+                      "title": "The Introverted Feeling Type",
+                      "para_range": [640, 643],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Summary of the Introverted Rational Types": {
+                      "title": "Summary of the Introverted Rational Types",
+                      "para_range": [644, 646],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Sensation": {
+                      "title": "Sensation",
+                      "para_range": [647, 649],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Introverted Sensation Type": {
+                      "title": "The Introverted Sensation Type",
+                      "para_range": [650, 654],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Intuition": {
+                      "title": "Intuition",
+                      "para_range": [655, 660],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Introverted Intuitive Type": {
+                      "title": "The Introverted Intuitive Type",
+                      "para_range": [661, 663],
+                      "sub": []
+                    }
+                  },
+                  {
+                    "Summary of the Introverted Irrational Types": {
+                      "title": "Summary of the Introverted Irrational Types",
+                      "para_range": [664, 665],
+                      "sub": []
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "d": {
+                "title": "The Principal and Auxiliary Functions",
+                "para_range": [666, 671],
+                "sub": []
+              }
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "CH11": {
+    "symbol": "XI",
+    "title": "Definitions",
+    "para_range": [672, 844],
+    "sub": []
+  },
+  "EPILOGUE": {
+    "symbol": null,
+    "title": "Epilogue",
+    "para_range": [845, 857],
+    "sub": []
+  },
+  "APPENDIX": {
+    "symbol": null,
+    "title": "APPENDIX: FOUR PAPERS ON PSYCHOLOGICAL TYPOLOGY",
+    "para_range": [858, 987],
+    "sub": [
+      {
+        "1": {
+          "title": "A Contribution to the Study of Psychological Types (1913)",
+          "para_range": [858, 882],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "Psychological Types (1923)",
+          "para_range": [883, 914],
+          "sub": []
+        }
+      },
+      {
+        "3": {
+          "title": "A Psychological Theory of Types (1931)",
+          "para_range": [915, 959],
+          "sub": []
+        }
+      },
+      {
+        "4": {
+          "title": "Psychological Typology (1936)",
+          "para_range": [960, 987],
+          "sub": []
+        }
+      }
+    ]
+  }
+}

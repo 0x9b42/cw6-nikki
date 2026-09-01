@@ -1,0 +1,73 @@
+---
+layout: layouts/base.njk
+permalink: /index.html
+---
+<div class="hero">
+  <p class="hero__eyebrow">{{ site.workNote }}</p>
+  <h1>Anotasi <em>Psychological Types</em></h1>
+  <p class="hero__tagline">{{ site.tagline }}</p>
+
+  <div class="hero__meta">
+    <div class="hero__stat">
+      <span class="hero__stat-num">{{ stats.totalParagraphs }}</span>
+      <span class="hero__stat-label">Total paragraf</span>
+    </div>
+    <div class="hero__stat">
+      <span class="hero__stat-num">{{ stats.totalAnnotated }}</span>
+      <span class="hero__stat-label">Sudah dianotasi</span>
+    </div>
+    <div class="hero__stat">
+      <span class="hero__stat-num">{{ chapters.length }}</span>
+      <span class="hero__stat-label">Bab & lampiran</span>
+    </div>
+  </div>
+
+  <div class="hero__progress-row">
+    <div class="hero__progress">
+      <div class="hero__progress-fill" style="width: {{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%"></div>
+    </div>
+    <span class="hero__progress-text">{{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%</span>
+    <span style="font-family: var(--font-sans); font-size: var(--step--1); color: var(--ink-3);">diselesaikan</span>
+  </div>
+</div>
+
+<div class="page page--wide">
+  <div class="section-head">
+    <h2>Navigasi Bab</h2>
+    <span class="section-head__hint">§0 — §987 · klik kartu untuk mulai membaca</span>
+  </div>
+
+  <div class="chapter-grid">
+    {% for chapter in chapters %}
+    <a class="chapter-card" href="{{ ('/cw6/' + chapter.id + '/') | url }}">
+      {% if chapter.symbol %}<span class="chapter-card__symbol">Bagian {{ chapter.symbol }}</span>{% else %}<span class="chapter-card__symbol">{{ chapter.id }}</span>{% endif %}
+      <span class="chapter-card__title">{{ chapter.title }}</span>
+      <span class="chapter-card__meta">
+        <span>§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
+        {% if chapter.annotatedCount > 0 %}
+        <span class="chapter-card__annot-badge">{{ chapter.annotatedCount }}</span>
+        {% else %}
+        <span class="chapter-card__annot-badge chapter-card__annot-badge--empty">0</span>
+        {% endif %}
+      </span>
+      <svg class="chapter-card__chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+    </a>
+    {% endfor %}
+  </div>
+
+  <p style="margin-top: 2.5rem; font-family: var(--font-sans); font-size: var(--step--1);">
+    <a href="{{ '/anotasi/' | url }}">Lihat semua paragraf yang sudah dianotasi →</a>
+  </p>
+</div>
+
+<footer class="site-footer">
+  <div class="site-footer__meta">
+    Disusun oleh <strong>{{ site.author }}</strong>. Teks asli mengikuti nomor paragraf
+    <em>{{ site.workNote }}</em>.
+  </div>
+  <div class="site-footer__hint">
+    <span class="kbd">J</span> paragraf berikutnya
+    <span style="margin: 0 0.3rem;">·</span>
+    <span class="kbd">K</span> sebelumnya
+  </div>
+</footer>

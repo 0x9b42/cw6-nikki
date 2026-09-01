@@ -1,0 +1,65 @@
+---
+pagination:
+  data: paragraphs
+  size: 1
+  alias: paragraph
+permalink: "/cw6/{{ paragraph.chapterId }}/{{ paragraph.slug }}/index.html"
+layout: layouts/base.njk
+eleventyComputed:
+  title: "§{{ paragraph.num }} — {{ paragraph.chapterTitle }}"
+  description: "Anotasi paragraf {{ paragraph.num }} dari {{ site.workTitle }} karya {{ site.workAuthor }}."
+---
+<article class="page">
+  <p class="breadcrumb">
+    <a href="{{ '/' | url }}">{{ site.shortTitle }}</a>
+    <span class="breadcrumb__sep">›</span>
+    <a href="{{ ('/cw6/' + paragraph.chapterId + '/') | url }}">{{ paragraph.chapterTitle }}</a>
+    {% for h in paragraph.headingPath %}
+    <span class="breadcrumb__sep">›</span>
+    {% if loop.last %}
+    <span class="breadcrumb__current">{{ h.label }}. {{ h.title }}</span>
+    {% else %}
+    <span>{{ h.label }}. {{ h.title }}</span>
+    {% endif %}
+    {% endfor %}
+  </p>
+
+  <div class="para para--standalone" id="{{ paragraph.slug }}">
+    <a class="para__num" href="{{ ('/cw6/' + paragraph.chapterId + '/#' + paragraph.slug) | url }}" title="Lihat dalam konteks bab">§{{ paragraph.num }}</a>
+    <div class="para__text">{{ paragraph.html | safe }}</div>
+  </div>
+
+  {% if paragraph.annotationHtml %}
+  <div class="annotation annotation--standalone">
+    <span class="annotation__label">Anotasi · §{{ paragraph.num }}</span>
+    {{ paragraph.annotationHtml | safe }}
+  </div>
+  {% else %}
+  <div class="empty-state empty-state--inline">
+    Belum ada anotasi untuk paragraf ini. Tambahkan berkas
+    <code>src/_annotations/cw6/{{ paragraph.chapterId }}/{{ paragraph.slug }}.md</code>
+    untuk mengisinya.
+  </div>
+  {% endif %}
+
+  <nav class="chapter-nav" aria-label="Navigasi paragraf">
+    {% if paragraph.prev %}
+    <a href="{{ ('/cw6/' + paragraph.prev.chapterId + '/' + paragraph.prev.slug + '/') | url }}">
+      <span class="chapter-nav__dir">
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="15 18 9 12 15 6"/></svg>
+        Paragraf sebelumnya
+      </span>
+      <span class="chapter-nav__title">§{{ paragraph.prev.num }}</span>
+    </a>
+    {% else %}<span></span>{% endif %}
+    {% if paragraph.next %}
+    <a class="chapter-nav__next" href="{{ ('/cw6/' + paragraph.next.chapterId + '/' + paragraph.next.slug + '/') | url }}">
+      <span class="chapter-nav__dir">
+        Paragraf berikutnya
+        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="9 18 15 12 9 6"/></svg>
+      </span>
+      <span class="chapter-nav__title">§{{ paragraph.next.num }}</span>
+    </a>
+    {% endif %}
+  </nav>
+</article>
