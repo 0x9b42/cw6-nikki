@@ -2,12 +2,14 @@
   "INTRO": {
     "symbol": null,
     "title": "Introduction",
+    "summary": "Pendahuluan: Menjelaskan masalah 'Persamaan Pribadi' (Personal Equation)—bahwa setiap teori psikologis sangat dipengaruhi oleh tipe psikologis penciptanya. Jung menguraikan perlunya sebuah psikologi kritis untuk menjembatani perbedaan pemahaman antar manusia dan mencegah kesalahpahaman fatal.",
     "para_range": [0, 8],
     "sub": []
   },
   "CH01": {
     "symbol": "I",
     "title": "THE PROBLEM OF TYPES IN THE HISTORY OF CLASSICAL AND MEDIEVAL THOUGHT",
+    "summary": "Eksplorasi akar tipologi di zaman klasik dan abad pertengahan. Jung membedah konflik awal antara Ekstraversi dan Introversi melalui perdebatan teologis (Gnostik, Tertullian vs Origen) serta polemik filsafat ontologis antara Nominalisme melawan Realisme.",
     "para_range": [8, 100],
     "sub": [
       {
@@ -46,14 +48,14 @@
             {
               "b": {
                 "title": "The Problem of Universals in Scholasticism",
-                "para_range": [56, 67],
+                "para_range": [56, 68],
                 "sub": []
               }
             },
             {
               "c": {
                 "title": "Abelard's Attempt at Conciliation",
-                "para_range": [68, 95],
+                "para_range": [69, 95],
                 "sub": []
               }
             }
@@ -71,25 +73,26 @@
   },
   "CH02": {
     "symbol": "II",
-    "title": "Schiller's Ideas on the Type Problem",
+    "title": "SCHILLER'S IDEAS ON THE TYPE PROBLEM",
+    "summary": "Analisis terhadap karya Friedrich Schiller mengenai pendidikan estetika. Jung mengkaji perbedaan penyair 'naif' (berorientasi pada objek luar/ekstravert) dan 'sentimental' (berorientasi pada ide/introvert), serta mengeksplorasi lahirnya 'Fungsi Transenden' untuk menyatukan dua dorongan ekstrem melalui simbol.",
     "para_range": [101, 222],
     "sub": [
       {
         "1": {
           "title": "LETTERS ON THE AESTHETIC EDUCATION OF MAN",
-          "para_range": [101, 212],
+          "para_range": [101, 165],
           "sub": [
             {
               "a": {
                 "title": "The Superior and the Inferior Functions",
-                "para_range": [101, 151],
+                "para_range": [101, 110],
                 "sub": []
               }
             },
             {
               "b": {
                 "title": "Concerning the Basic Instincts",
-                "para_range": [152, 212],
+                "para_range": [111, 165],
                 "sub": []
               }
             }
@@ -98,27 +101,27 @@
       },
       {
         "2": {
-          "title": "A DISCUSSION ON NAÏVE AND SENTIMENTAL POETRY",
-          "para_range": [213, 222],
+          "title": "A DISCUSSION ON NAIVE AND SENTIMENTAL POETRY",
+          "para_range": [166, 222],
           "sub": [
             {
               "a": {
-                "title": "The Naïve Attitude",
-                "para_range": [215, 216],
+                "title": "The Naive Attitude",
+                "para_range": [166, 172],
                 "sub": []
               }
             },
             {
               "b": {
                 "title": "The Sentimental Attitude",
-                "para_range": [217, 219],
+                "para_range": [173, 199],
                 "sub": []
               }
             },
             {
               "c": {
                 "title": "The Idealist and the Realist",
-                "para_range": [220, 222],
+                "para_range": [200, 222],
                 "sub": []
               }
             }
@@ -129,131 +132,76 @@
   },
   "CH03": {
     "symbol": "III",
-    "title": "The Apollinian and the Dionysian",
+    "title": "THE APOLLINIAN AND THE DIONYSIAN",
+    "summary": "Membedah konsep Apollonian dan Dionysian dari Friedrich Nietzsche. Apollonian dilihat sebagai mekanisme Introversi (keterbatasan, bentuk, pengamatan batin), sedangkan Dionysian mewakili mekanisme Ekstraversi (peleburan yang tak terbatas dan irasional dengan alam maupun objek).",
     "para_range": [223, 242],
     "sub": []
   },
   "CH04": {
     "symbol": "IV",
-    "title": "The Type Problem in Human Character",
-    "para_range": [243, 274],
+    "title": "THE TYPE PROBLEM IN HUMAN CHARACTER",
+    "summary": "Tinjauan terhadap teori karakter manusia dari Furneaux Jordan. Jung membandingkan pembagian tipe kepribadian Jordan—antara individu yang 'kurang bersemangat' (introvert reflektif) dan 'bersemangat' (ekstravert impulsif)—dengan kerangka tipologinya sendiri.",
+    "para_range": [243, 256],
     "sub": [
       {
         "1": {
-          "title": "GENERAL REMARKS ON JORDAN'S TYPES",
-          "para_range": [243, 254],
+          "title": "General Remarks on Jordan's Types",
+          "para_range": [243, 246],
           "sub": []
         }
       },
       {
         "2": {
-          "title": "SPECIAL DESCRIPTION AND CRITICISM OF JORDAN'S TYPES",
-          "para_range": [255, 274],
-          "sub": [
-            {
-              "a": {
-                "title": "The Introverted Woman",
-                "para_range": [256, 259],
-                "sub": []
-              }
-            },
-            {
-              "b": {
-                "title": "The Extraverted Woman",
-                "para_range": [260, 264],
-                "sub": []
-              }
-            },
-            {
-              "c": {
-                "title": "The Extraverted Man",
-                "para_range": [265, 268],
-                "sub": []
-              }
-            },
-            {
-              "d": {
-                "title": "The Introverted Man",
-                "para_range": [269, 274],
-                "sub": []
-              }
-            }
-          ]
+          "title": "Special Description and Criticism of Jordan's Types",
+          "para_range": [247, 256],
+          "sub": []
         }
       }
     ]
   },
   "CH05": {
     "symbol": "V",
-    "title": "The Type Problem in Poetry",
-    "para_range": [275, 460],
+    "title": "THE TYPE PROBLEM IN POETRY",
+    "summary": "Eksplorasi masalah tipologi dalam karya sastra, berfokus pada epos Carl Spitteler, 'Prometheus and Epimetheus'. Prometheus melambangkan pemikir Introvert yang setia pada jiwa terdalamnya, sementara Epimetheus adalah Extravert yang tunduk pada tuntutan dunia luar. Bab ini sangat krusial dalam membahas 'Simbol Penyatu' (Uniting Symbol).",
+    "para_range": [257, 432],
     "sub": [
       {
         "1": {
-          "title": "INTRODUCTORY REMARKS ON SPITTELER'S TYPOLOGY",
-          "para_range": [275, 287],
+          "title": "Introduction",
+          "para_range": [257, 266],
           "sub": []
         }
       },
       {
         "2": {
-          "title": "A COMPARISON OF SPITTELER'S WITH GOETHE'S PROMETHEUS",
-          "para_range": [288, 317],
+          "title": "Spitteler's Prometheus and Epimetheus",
+          "para_range": [267, 315],
           "sub": []
         }
       },
       {
         "3": {
-          "title": "THE SIGNIFICANCE OF THE UNITING SYMBOL",
-          "para_range": [318, 374],
-          "sub": [
-            {
-              "a": {
-                "title": "The Brahmanic Conception of the Problem of Opposites",
-                "para_range": [327, 330],
-                "sub": []
-              }
-            },
-            {
-              "b": {
-                "title": "The Brahmanic Conception of the Uniting Symbol",
-                "para_range": [331, 347],
-                "sub": []
-              }
-            },
-            {
-              "c": {
-                "title": "The Uniting Symbol as the Principle of Dynamic Regulation",
-                "para_range": [348, 357],
-                "sub": []
-              }
-            },
-            {
-              "d": {
-                "title": "The Uniting Symbol in Chinese Philosophy",
-                "para_range": [358, 374],
-                "sub": []
-              }
-            }
-          ]
+          "title": "The Significance of the Uniting Symbol",
+          "para_range": [316, 332],
+          "sub": []
         }
       },
       {
         "4": {
-          "title": "THE RELATIVITY OF THE SYMBOL",
-          "para_range": [375, 433],
+          "title": "The Relativity of the Symbol",
+          "para_range": [333, 390],
           "sub": [
             {
               "a": {
                 "title": "The Worship of Woman and the Worship of the Soul",
-                "para_range": [375, 406],
+                "para_range": [333, 357],
                 "sub": []
               }
             },
             {
               "b": {
-                "title": "The Relativity of the God-concept in Meister Eckhart",
-                "para_range": [407, 433],
+                "title": "The Healing Nature of the Uniting Symbol in Meister Eckhart",
+                "para_range": [358, 390],
                 "sub": []
               }
             }
@@ -262,8 +210,8 @@
       },
       {
         "5": {
-          "title": "THE NATURE OF THE UNITING SYMBOL IN SPITTELER",
-          "para_range": [434, 460],
+          "title": "The Nature of the Uniting Symbol in Spitteler",
+          "para_range": [391, 432],
           "sub": []
         }
       }
@@ -271,308 +219,174 @@
   },
   "CH06": {
     "symbol": "VI",
-    "title": "The Type Problem in Psychopathology",
-    "para_range": [461, 483],
-    "sub": []
-  },
-  "CH07": {
-    "symbol": "VII",
-    "title": "The Type Problem in Aesthetics",
-    "para_range": [484, 504],
-    "sub": []
-  },
-  "CH08": {
-    "symbol": "VIII",
-    "title": "The Type Problem in Modern Philosophy",
-    "para_range": [505, 541],
+    "title": "THE TYPE PROBLEM IN PSYCHIATRY",
+    "summary": "Perspektif klinis tentang tipe dalam psikiatri. Jung menganalisis teori Otto Gross tentang 'fungsi primer dan sekunder' kesadaran. Ia juga menghubungkan Ekstraversi dengan neurosis histeria, serta Introversi dengan psikopatologi skizofrenia (dementia praecox) ketika menjadi ekstrem.",
+    "para_range": [433, 460],
     "sub": [
       {
         "1": {
-          "title": "WILLIAM JAMES' TYPES",
-          "para_range": [505, 517],
+          "title": "General Remarks on Gross's Views",
+          "para_range": [433, 435],
           "sub": []
         }
       },
       {
         "2": {
-          "title": "THE CHARACTERISTIC PAIRS OF OPPOSITES IN JAMES' TYPES",
-          "para_range": [518, 537],
+          "title": "The Secondary Function",
+          "para_range": [436, 441],
+          "sub": []
+        }
+      },
+      {
+        "3": {
+          "title": "The Broad and the Deep Type",
+          "para_range": [442, 460],
+          "sub": []
+        }
+      }
+    ]
+  },
+  "CH07": {
+    "symbol": "VII",
+    "title": "THE TYPE PROBLEM IN AESTHETICS",
+    "summary": "Penelusuran tipologi dalam proses kreasi dan apresiasi seni (merujuk pada Wilhelm Worringer). Jung mengontraskan dorongan 'Empati' (sikap Ekstravert yang proyektif dan melebur dengan objek seni) melawan dorongan 'Abstraksi' (sikap Introvert yang menarik diri dan mencari bentuk ideal absolut).",
+    "para_range": [461, 495],
+    "sub": [
+      {
+        "1": {
+          "title": "Worringer's Problem",
+          "para_range": [461, 469],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "Empathy and Abstraction",
+          "para_range": [470, 495],
+          "sub": []
+        }
+      }
+    ]
+  },
+  "CH08": {
+    "symbol": "VIII",
+    "title": "THE TYPE PROBLEM IN MODERN PHILOSOPHY",
+    "summary": "Konflik tipologi dalam ranah filsafat pragmatisme modern melalui kacamata William James. Menguraikan polarisasi klasik antara pemikir 'Tough-minded' (empiris, materialistis, ekstravert) melawan 'Tender-minded' (rasionalis, idealis, introvert).",
+    "para_range": [496, 541],
+    "sub": [
+      {
+        "1": {
+          "title": "William James' Types",
+          "para_range": [496, 515],
+          "sub": []
+        }
+      },
+      {
+        "2": {
+          "title": "The Characteristic Pairs of Opposites in James's Types",
+          "para_range": [516, 541],
           "sub": [
             {
               "a": {
-                "title": "Rationalism versus Empiricism",
-                "para_range": [518, 522],
+                "title": "Rationalism v. Empiricism",
+                "para_range": [516, 519],
                 "sub": []
               }
             },
             {
               "b": {
-                "title": "Intellectualism versus Sensationalism",
-                "para_range": [523],
+                "title": "Idealism v. Materialism",
+                "para_range": [520, 523],
                 "sub": []
               }
             },
             {
               "c": {
-                "title": "Idealism versus Materialism",
-                "para_range": [524, 525],
+                "title": "Optimism v. Pessimism",
+                "para_range": [524, 526],
                 "sub": []
               }
             },
             {
               "d": {
-                "title": "Optimism versus Pessimism",
-                "para_range": [527, 527],
+                "title": "Religiousness v. Irreligiousness",
+                "para_range": [527, 529],
                 "sub": []
               }
             },
             {
               "e": {
-                "title": "Religiousness versus Irreligiousness",
-                "para_range": [528, 530],
+                "title": "Free-will v. Fatalism",
+                "para_range": [530, 532],
                 "sub": []
               }
             },
             {
               "f": {
-                "title": "Indeterminism versus Determinism",
-                "para_range": [531, 535],
+                "title": "Monism v. Pluralism",
+                "para_range": [533, 537],
                 "sub": []
               }
             },
             {
               "g": {
-                "title": "Monism versus Pluralism",
-                "para_range": [536],
-                "sub": []
-              }
-            },
-            {
-              "h": {
-                "title": "Dogmatism versus Scepticism",
-                "para_range": [537],
+                "title": "Dogmatism v. Scepticism",
+                "para_range": [538, 541],
                 "sub": []
               }
             }
           ]
-        }
-      },
-      {
-        "3": {
-          "title": "GENERAL CRITICISM OF JAMES' TYPOLOGY",
-          "para_range": [538, 541],
-          "sub": []
         }
       }
     ]
   },
   "CH09": {
     "symbol": "IX",
-    "title": "The Type Problem in Biography",
+    "title": "THE TYPE PROBLEM IN BIOGRAPHY",
+    "summary": "Mengkaji masalah 'Persamaan Pribadi' dalam penulisan sejarah dan biografi. Menjelaskan bias bawah sadar di mana seorang penulis biografi sering kali menafsirkan subjeknya melalui filter 'Einstellung' (Sikap Jiwa) miliknya sendiri, menyebabkan kesalahpahaman historis.",
     "para_range": [542, 555],
-    "sub": []
+    "sub": [
+      {
+        "1": {
+          "title": "Understanding of Other Types",
+          "para_range": [542, 555],
+          "sub": []
+        }
+      }
+    ]
   },
   "CH10": {
     "symbol": "X",
-    "title": "General Description of the Types",
+    "title": "GENERAL DESCRIPTION OF THE TYPES",
+    "summary": "Inti utama bangunan teoretis Tipologi Jung. Penjabaran komprehensif mengenai 2 Sikap Umum (Ekstraversi & Introversi) dan 4 Fungsi (Berpikir, Perasa, Pengindra, Intuisi). Bab ini merinci manifestasi sadar dari masing-masing tipe sekaligus efek kompensasi neurotik dari ketidaksadarannya.",
     "para_range": [556, 671],
     "sub": [
       {
         "1": {
-          "title": "INTRODUCTION",
-          "para_range": [556, 561],
+          "title": "Introduction",
+          "para_range": [556, 563],
           "sub": []
         }
       },
       {
         "2": {
-          "title": "THE EXTRAVERTED TYPE",
-          "para_range": [562, 619],
-          "sub": [
-            {
-              "a": {
-                "title": "The General Attitude of Consciousness",
-                "para_range": [563, 567],
-                "sub": []
-              }
-            },
-            {
-              "b": {
-                "title": "The Attitude of the Unconscious",
-                "para_range": [568, 576],
-                "sub": []
-              }
-            },
-            {
-              "c": {
-                "title": "The Peculiarities of the Basic Psychological Functions in the Extraverted Attitude",
-                "para_range": [577, 619],
-                "sub": [
-                  {
-                    "Thinking": {
-                      "title": "Thinking",
-                      "para_range": [577, 583],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Extraverted Thinking Type": {
-                      "title": "The Extraverted Thinking Type",
-                      "para_range": [584, 594],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Feeling": {
-                      "title": "Feeling",
-                      "para_range": [595, 596],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Extraverted Feeling Type": {
-                      "title": "The Extraverted Feeling Type",
-                      "para_range": [597, 600],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Summary of the Extraverted Rational Types": {
-                      "title": "Summary of the Extraverted Rational Types",
-                      "para_range": [601, 603],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Sensation": {
-                      "title": "Sensation",
-                      "para_range": [604, 605],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Extraverted Sensation Type": {
-                      "title": "The Extraverted Sensation Type",
-                      "para_range": [606, 609],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Intuition": {
-                      "title": "Intuition",
-                      "para_range": [610, 612],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Extraverted Intuitive Type": {
-                      "title": "The Extraverted Intuitive Type",
-                      "para_range": [613, 615],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Summary of the Extraverted Irrational Types": {
-                      "title": "Summary of the Extraverted Irrational Types",
-                      "para_range": [616, 619],
-                      "sub": []
-                    }
-                  }
-                ]
-              }
-            }
-          ]
+          "title": "The Extraverted Type",
+          "para_range": [564, 619],
+          "sub": []
         }
       },
       {
         "3": {
-          "title": "THE INTROVERTED TYPE",
+          "title": "The Introverted Type",
           "para_range": [620, 671],
           "sub": [
             {
-              "a": {
-                "title": "The General Attitude of Consciousness",
-                "para_range": [620, 625],
-                "sub": []
-              }
-            },
-            {
-              "b": {
-                "title": "The Attitude of the Unconscious",
-                "para_range": [626, 627],
-                "sub": []
-              }
-            },
-            {
               "c": {
                 "title": "The Peculiarities of the Basic Psychological Functions in the Introverted Attitude",
-                "para_range": [628, 667],
+                "para_range": [628, 671],
                 "sub": [
                   {
-                    "Thinking": {
-                      "title": "Thinking",
-                      "para_range": [628, 631],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Introverted Thinking Type": {
-                      "title": "The Introverted Thinking Type",
-                      "para_range": [632, 637],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Feeling": {
-                      "title": "Feeling",
-                      "para_range": [638, 639],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Introverted Feeling Type": {
-                      "title": "The Introverted Feeling Type",
-                      "para_range": [640, 643],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Summary of the Introverted Rational Types": {
-                      "title": "Summary of the Introverted Rational Types",
-                      "para_range": [644, 646],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Sensation": {
-                      "title": "Sensation",
-                      "para_range": [647, 649],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Introverted Sensation Type": {
-                      "title": "The Introverted Sensation Type",
-                      "para_range": [650, 654],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Intuition": {
-                      "title": "Intuition",
-                      "para_range": [655, 660],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Introverted Intuitive Type": {
-                      "title": "The Introverted Intuitive Type",
-                      "para_range": [661, 663],
-                      "sub": []
-                    }
-                  },
-                  {
-                    "Summary of the Introverted Irrational Types": {
+                    "d": {
                       "title": "Summary of the Introverted Irrational Types",
                       "para_range": [664, 665],
                       "sub": []
@@ -596,18 +410,21 @@
   "CH11": {
     "symbol": "XI",
     "title": "Definitions",
+    "summary": "Glosarium Konseptual Formal. Berisi puluhan definisi ontologis dan teknis yang sangat penting untuk memahami seluruh kerangka psikologi analitis Jung (mendefinisikan Ego, Self, Anima/Animus, Kompleks, Einstellung/Attitude, Libido, Simbol, Individuasi, dll).",
     "para_range": [672, 844],
     "sub": []
   },
   "EPILOGUE": {
     "symbol": null,
     "title": "Epilogue",
+    "summary": "Catatan penutup Jung yang memberi peringatan tegas. Ia menegaskan bahwa tipologinya tidak diciptakan untuk melabeli manusia ke dalam kotak kaku, melainkan sebagai kompas empiris dan kerangka epistemologis untuk memandu praktik analitis serta individuasi jiwa.",
     "para_range": [845, 857],
     "sub": []
   },
   "APPENDIX": {
     "symbol": null,
     "title": "APPENDIX: FOUR PAPERS ON PSYCHOLOGICAL TYPOLOGY",
+    "summary": "Koleksi empat makalah awal (1913-1936) yang merekam tapak tilas evolusi pemikiran Jung mengenai tipe kepribadian, menunjukkan pergeseran fokus dari sekadar merespon psikoanalisis Freudian menuju terbentuknya teori psikologi analitis yang mandiri.",
     "para_range": [858, 987],
     "sub": [
       {
@@ -627,14 +444,14 @@
       {
         "3": {
           "title": "A Psychological Theory of Types (1931)",
-          "para_range": [915, 959],
+          "para_range": [915, 963],
           "sub": []
         }
       },
       {
         "4": {
           "title": "Psychological Typology (1936)",
-          "para_range": [960, 987],
+          "para_range": [964, 987],
           "sub": []
         }
       }

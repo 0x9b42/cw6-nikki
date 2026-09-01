@@ -7,7 +7,10 @@ module.exports = function (eleventyConfig) {
   // Potong HTML jadi teks polos yang dipendekkan, untuk cuplikan di indeks anotasi.
   eleventyConfig.addFilter("excerpt", function (html, length = 180) {
     if (!html) return "";
-    const text = html.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const text = html
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
     return text.length > length ? text.slice(0, length).trim() + "…" : text;
   });
 

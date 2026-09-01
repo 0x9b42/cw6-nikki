@@ -18,7 +18,11 @@ const CONTENT_DIR = path.join(__dirname, "..", "_content", "cw6");
 const ANNOTATION_DIR = path.join(__dirname, "..", "_annotations", "cw6");
 
 // Beberapa key toc.json tidak match 1:1 dengan nama folder (huruf besar vs kecil).
-const FOLDER_OVERRIDES = { INTRO: "intro", EPILOGUE: "epilogue", APPENDIX: "appendix" };
+const FOLDER_OVERRIDES = {
+  INTRO: "intro",
+  EPILOGUE: "epilogue",
+  APPENDIX: "appendix",
+};
 
 function folderFor(key) {
   return FOLDER_OVERRIDES[key] || key.toLowerCase();
@@ -31,7 +35,9 @@ function pad3(n) {
 // Perbaiki path gambar absolut ("/assets/...") agar tetap benar walau situs
 // di-deploy di bawah sub-path (GitHub Pages project page).
 function withPathPrefix(html) {
-  const prefix = site.pathPrefix.endsWith("/") ? site.pathPrefix : site.pathPrefix + "/";
+  const prefix = site.pathPrefix.endsWith("/")
+    ? site.pathPrefix
+    : site.pathPrefix + "/";
   if (prefix === "/") return html;
   return html.replace(/src="\/assets\//g, `src="${prefix}assets/`);
 }
@@ -58,7 +64,9 @@ function loadChapter(key, order) {
   const dir = path.join(CONTENT_DIR, folder);
   const annDir = path.join(ANNOTATION_DIR, folder);
 
-  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => /^p\d+\.html$/.test(f)) : [];
+  const files = fs.existsSync(dir)
+    ? fs.readdirSync(dir).filter((f) => /^p\d+\.html$/.test(f))
+    : [];
   const numbers = files
     .map((f) => parseInt(f.match(/^p(\d+)\.html$/)[1], 10))
     .sort((a, b) => a - b);
@@ -66,7 +74,8 @@ function loadChapter(key, order) {
   const headings = flattenHeadings(toc[key].sub, 1, []);
   const headingsByParagraph = {};
   for (const h of headings) {
-    (headingsByParagraph[h.atParagraph] = headingsByParagraph[h.atParagraph] || []).push(h);
+    (headingsByParagraph[h.atParagraph] =
+      headingsByParagraph[h.atParagraph] || []).push(h);
   }
 
   let annotatedCount = 0;
@@ -78,8 +87,17 @@ function loadChapter(key, order) {
   for (const num of numbers) {
     if (headingsByParagraph[num]) {
       for (const h of headingsByParagraph[num]) {
-        items.push({ type: "heading", level: h.level, label: h.label, title: h.title });
-        activePath[h.level - 1] = { level: h.level, label: h.label, title: h.title };
+        items.push({
+          type: "heading",
+          level: h.level,
+          label: h.label,
+          title: h.title,
+        });
+        activePath[h.level - 1] = {
+          level: h.level,
+          label: h.label,
+          title: h.title,
+        };
         activePath.length = h.level; // buang jejak level yang lebih dalam dari heading baru ini
       }
     }
@@ -103,7 +121,9 @@ function loadChapter(key, order) {
       slug: `p${pad3(num)}`,
       html,
       annotationHtml,
-      headingPath: activePath.filter(Boolean).map((h) => ({ label: h.label, title: h.title })),
+      headingPath: activePath
+        .filter(Boolean)
+        .map((h) => ({ label: h.label, title: h.title })),
     });
   }
 
@@ -113,6 +133,7 @@ function loadChapter(key, order) {
     order,
     symbol: toc[key].symbol,
     title: toc[key].title,
+    summary: toc[key].summary,
     paragraphCount: numbers.length,
     annotatedCount,
     firstParagraph: numbers.length ? numbers[0] : null,
@@ -130,8 +151,22 @@ module.exports = function () {
   const chapters = keys.map((key, i) => loadChapter(key, i));
 
   chapters.forEach((c, i) => {
-    c.prev = i > 0 ? { id: chapters[i - 1].id, title: chapters[i - 1].title, symbol: chapters[i - 1].symbol } : null;
-    c.next = i < chapters.length - 1 ? { id: chapters[i + 1].id, title: chapters[i + 1].title, symbol: chapters[i + 1].symbol } : null;
+    c.prev =
+      i > 0
+        ? {
+            id: chapters[i - 1].id,
+            title: chapters[i - 1].title,
+            symbol: chapters[i - 1].symbol,
+          }
+        : null;
+    c.next =
+      i < chapters.length - 1
+        ? {
+            id: chapters[i + 1].id,
+            title: chapters[i + 1].title,
+            symbol: chapters[i + 1].symbol,
+          }
+        : null;
   });
 
   _cache = chapters;

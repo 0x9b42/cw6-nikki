@@ -1,7 +1,7 @@
 # Anotasi Psychological Types (CW 6)
 
 Situs statis (Eleventy) untuk anotasi hermeneutik paragraf-demi-paragraf atas
-*Psychological Types* karya C. G. Jung.
+_Psychological Types_ karya C. G. Jung.
 
 ## Struktur proyek
 
@@ -98,20 +98,23 @@ Desain situs ini mengikuti estetika **edisi kritis modern**: hangat, tenang, dan
 dirancang untuk membaca lama.
 
 ### Sistem tipografi
-- **Teks asli Jung** → *Newsreader* (serif sastrawi), tinta hangat, ukuran optik
+
+- **Teks asli Jung** → _Newsreader_ (serif sastrawi), tinta hangat, ukuran optik
   responsif. Drop cap pada paragraf pembuka tiap bab menandai bab baru.
-- **Anotasi & UI** → *Inter* (sans modern), warna tinta teal `#1f4e5f` dengan
+- **Anotasi & UI** → _Inter_ (sans modern), warna tinta teal `#1f4e5f` dengan
   blok latar teal muda — meniru catatan pena di margin buku fisik, supaya
   suara Jung dan suara kamu selalu bisa dibedakan sekilas pandang.
 - **Nomor paragraf** → sans, kecil, di margin kiri (seperti buku ber-catatan-kaki).
 
 ### Palet warna
+
 - **Terang** — kertas krem `#faf8f3`, tinta hangat `#211c16`, aksen burgundy
   `#8b3a2b` untuk tautan, teal marginalia untuk anotasi.
 - **Gelap** — charcoal hangat `#161310`, tinta krem terang, aksen coral
   `#d9855f`, teal muda `#6fb5c2`. Tema dipersisten via `localStorage`.
 
 ### Fitur UX
+
 - **Topbar fixed** dengan brand, progress bar baca (scroll-based), dan toggle
   tema terang/gelap (persisten, menghormati `prefers-color-scheme`).
 - **Sidebar TOC** dengan highlight bab aktif otomatis berdasarkan URL.

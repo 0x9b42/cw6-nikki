@@ -28,8 +28,22 @@ module.exports = function () {
   }
 
   flat.forEach((p, i) => {
-    p.prev = i > 0 ? { chapterId: flat[i - 1].chapterId, slug: flat[i - 1].slug, num: flat[i - 1].num } : null;
-    p.next = i < flat.length - 1 ? { chapterId: flat[i + 1].chapterId, slug: flat[i + 1].slug, num: flat[i + 1].num } : null;
+    p.prev =
+      i > 0
+        ? {
+            chapterId: flat[i - 1].chapterId,
+            slug: flat[i - 1].slug,
+            num: flat[i - 1].num,
+          }
+        : null;
+    p.next =
+      i < flat.length - 1
+        ? {
+            chapterId: flat[i + 1].chapterId,
+            slug: flat[i + 1].slug,
+            num: flat[i + 1].num,
+          }
+        : null;
   });
 
   _cache = flat;

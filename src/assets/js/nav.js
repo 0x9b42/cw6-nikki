@@ -44,7 +44,9 @@
     } else {
       root.removeAttribute("data-theme");
     }
-    try { localStorage.setItem("cw6-theme", theme); } catch (e) {}
+    try {
+      localStorage.setItem("cw6-theme", theme);
+    } catch (e) {}
   }
 
   if (themeBtn) {
@@ -68,15 +70,19 @@
 
   if (progressFill) {
     var ticking = false;
-    window.addEventListener("scroll", function () {
-      if (!ticking) {
-        window.requestAnimationFrame(function () {
-          updateProgress();
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
+    window.addEventListener(
+      "scroll",
+      function () {
+        if (!ticking) {
+          window.requestAnimationFrame(function () {
+            updateProgress();
+            ticking = false;
+          });
+          ticking = true;
+        }
+      },
+      { passive: true },
+    );
     updateProgress();
   }
 
@@ -84,23 +90,35 @@
      j / →  : next paragraph
      k / ←  : previous paragraph
      t      : toggle theme */
-  var prevLink = document.querySelector('.chapter-nav a:not(.chapter-nav__next)[href]');
-  var nextLink = document.querySelector('.chapter-nav__next[href]');
+  var prevLink = document.querySelector(
+    ".chapter-nav a:not(.chapter-nav__next)[href]",
+  );
+  var nextLink = document.querySelector(".chapter-nav__next[href]");
 
   function isTyping(e) {
     var t = e.target;
-    return t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+    return (
+      t &&
+      (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)
+    );
   }
 
   document.addEventListener("keydown", function (e) {
     if (isTyping(e)) return;
     var key = e.key.toLowerCase();
     if (key === "j" || (key === "arrowright" && !e.shiftKey)) {
-      if (nextLink) { window.location.href = nextLink.getAttribute("href"); }
+      if (nextLink) {
+        window.location.href = nextLink.getAttribute("href");
+      }
     } else if (key === "k" || (key === "arrowleft" && !e.shiftKey)) {
-      if (prevLink) { window.location.href = prevLink.getAttribute("href"); }
+      if (prevLink) {
+        window.location.href = prevLink.getAttribute("href");
+      }
     } else if (key === "t") {
-      if (themeBtn) { themeBtn.click(); e.preventDefault(); }
+      if (themeBtn) {
+        themeBtn.click();
+        e.preventDefault();
+      }
     }
   });
 
@@ -122,12 +140,19 @@
       });
       if (countEl) {
         if (q === "") {
-          countEl.textContent = "Menampilkan " + total + " dari " + total + " anotasi.";
+          countEl.textContent =
+            "Menampilkan " + total + " dari " + total + " anotasi.";
         } else {
-          countEl.textContent = "Menampilkan " + shown + " dari " + total + " anotasi untuk \"" + q + "\".";
+          countEl.textContent =
+            "Menampilkan " +
+            shown +
+            " dari " +
+            total +
+            ' anotasi untuk "' +
+            q +
+            '".';
         }
       }
     });
   }
-
 })();
