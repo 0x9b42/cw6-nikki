@@ -1,0 +1,43 @@
+---
+layout: layouts/base.njk
+permalink: /book-copyright/index.html
+title: Hak Cipta & Sumber
+description: Sumber teks, notis hak cipta penerbit asli, dan status anotasi di situs ini.
+---
+<article class="page page--reading copyright-page">
+  <header class="chapter-hero">
+    <h1>Copyright &amp; Sources</h1>
+  </header>
+
+  <section class="copyright-block">
+    <h2>Text source</h2>
+    <p>The text of {{ site.workTitle }} by {{ site.workAuthor }}, as presented on this site, is derived from the EPUB edition of {{ site.workNote }}. It is reproduced as-is, excluding footnotes, and organized according to the original paragraph numbering ({{ '§1' }}–{{ '§987' }}), solely for non-commercial personal reading and annotation.</p>
+  </section>
+
+  <section class="copyright-block">
+    <h2>Original publisher's copyright notice</h2>
+    <blockquote class="copyright-notice">
+      <p>
+        COPYRIGHT © 1971 BY PRINCETON UNIVERSITY PRESS, Second printing, 1974 First PRINCETON/BOLLINGEN PAPERBACK printing, with corrections, 1976 THIS EDITION IS BEING PUBLISHED IN THE UNITED STATES OF AMERICA BY PRINCETON UNIVERSITY PRESS AND IN ENGLAND BY ROUTLEDGE &amp; KEGAN PAUL, LTD. IN THE AMERICAN EDITION, ALL THE VOLUMES COMPRISING THE COLLECTED WORKS CONSTITUTE NUMBER XX IN BOLLINGEN SERIES. THE PRESENT VOLUME IS NUMBER 6 OF THE COLLECTED WORKS AND WAS THE SIXTEENTH TO APPEAR.
+      </p>
+      <p>
+        Except for the appendix, originally published in German as Psychologische Typen, Rascher Verlag, Zurich, 1921. Including appendix, published as volume 6 in the Gesammelte Werke, Rascher Verlag, Zurich, 1960; 2nd edition, 1967. The H. G. Baynes translation of Psychological Types was published in 1923 by Kegan Paul, London, and Harcourt, Brace and Co., New York.
+      </p>
+      <p>
+        ISBN 0-691-01813-8 (paperback edn.)
+        <br />
+        ISBN 0-691-09770-4 (hardcover edn.)
+        <br />
+        LIBRARY OF CONGRESS CATALOGUE CARD NUMBER: 75-156
+        <br />
+        MANUFACTURED IN THE U. S. A.
+      </p>
+    </blockquote>
+  </section>
+
+  <section class="copyright-block">
+    <h2>Annotation Status</h2>
+    <p>All annotations, notes, and comments on this site (currently {{ stats.totalAnnotated }} out of {{ stats.totalParagraphs }} paragraphs) are the personal writings of {{ site.author }}, separate from Jung's original text and neither affiliated with nor endorsed by Princeton University Press, the Bollingen Foundation, or any copyright holder of {{ site.workNote }}. This site is created for educational and personal reading purposes only, not for commercial purposes.</p>
+    <p>If you are a copyright holder and object to the presentation of the text on this site, please contact {{ site.author }} at <a href="https://t.me/annyctowl">Telegram</a> to request its removal or modification.</p>
+  </section>
+</article>

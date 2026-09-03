@@ -403,7 +403,44 @@ kbd {
 .page--wide {
   max-width: 1080px;
 }
-
+.copyright-page .chapter-hero {
+  margin-bottom: 2.2rem;
+}
+.copyright-block {
+  margin-bottom: 2.3rem;
+}
+.copyright-block:last-child {
+  margin-bottom: 0;
+}
+.copyright-block h2 {
+  margin: 0 0 0.8em;
+  font: 600 1.05rem var(--sans);
+  color: var(--text);
+}
+.copyright-block p {
+  margin: 0 0 1em;
+  font: 400 0.92rem/1.75 var(--sans);
+  color: var(--text);
+}
+.copyright-block p:last-child {
+  margin-bottom: 0;
+}
+.copyright-notice {
+  margin: 0;
+  padding: 1.15rem 1.3rem;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--line-strong);
+  border-radius: 8px;
+  background: var(--panel);
+}
+.copyright-notice p {
+  margin: 0 0 1em;
+  font: 400 0.76rem/1.75 var(--mono);
+  color: var(--muted);
+}
+.copyright-notice p:last-child {
+  margin-bottom: 0;
+}
 .home-hero {
   padding: 84px 0 68px;
 }

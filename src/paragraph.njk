@@ -72,7 +72,7 @@ eleventyComputed:
       <a
         href="{{ ('/' + paragraph.prev.chapterId + '/' + paragraph.prev.slug + '/') | url }}"
       >
-        <small>← Sebelumnya</small>
+        <small>← Prev</small>
         <strong>§{{ paragraph.prev.num }}</strong>
       </a>
     {% else %}
@@ -89,7 +89,7 @@ eleventyComputed:
         class="paragraph-nav__next"
         href="{{ ('/' + paragraph.next.chapterId + '/' + paragraph.next.slug + '/') | url }}"
       >
-        <small>Berikutnya →</small>
+        <small>Next →</small>
         <strong>§{{ paragraph.next.num }}</strong>
       </a>
     {% endif %}
