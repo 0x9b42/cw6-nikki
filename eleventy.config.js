@@ -15,12 +15,7 @@ module.exports = function (eleventyConfig) {
   });
 
   eleventyConfig.addFilter("pad3", (n) => String(n).padStart(3, "0"));
-
-  // Cek apakah string diawali dengan prefix — dipakai sidebar untuk menandai bab aktif.
-  eleventyConfig.addFilter("startsWith", (str, prefix) => {
-    if (!str || !prefix) return false;
-    return String(str).startsWith(String(prefix));
-  });
+  eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
 
   eleventyConfig.setServerOptions({ port: 8080 });
 

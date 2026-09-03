@@ -1,6 +1,3 @@
-// Daftar datar SEMUA paragraf, lintas bab, sesuai urutan kemunculan di buku.
-// Dipakai untuk halaman tersendiri tiap paragraf (/cw6/<bab>/pNNN/), lengkap
-// dengan navigasi paragraf-sebelumnya/berikutnya yang menyeberangi batas bab.
 const getChapters = require("./chapters.js");
 
 let _cache = null;
@@ -23,6 +20,7 @@ module.exports = function () {
         chapterId: c.id,
         chapterTitle: c.title,
         chapterSymbol: c.symbol,
+        chapterShortLabel: c.shortLabel,
       });
     }
   }

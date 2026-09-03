@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="id">
+<html lang="id" data-theme="light">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f4f0e7" />
     <title>
       {% if title %}
         {{ title }} —
@@ -10,118 +11,184 @@
       {{ site.title }}
     </title>
     <meta name="description" content="{{ description or site.tagline }}" />
-    <meta name="color-scheme" content="light dark" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,450;8..60,550;8..60,650&display=swap"
     />
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | url }}" />
-    <script>
-      // Apply theme before paint to avoid flash
-      (function () {
-        try {
-          var t = localStorage.getItem("cw6-theme");
-          if (
-            t === "dark" ||
-            (!t && window.matchMedia("(prefers-color-scheme: dark)").matches)
-          ) {
-            document.documentElement.setAttribute("data-theme", "dark");
-          }
-        } catch (e) {}
-      })();
-    </script>
   </head>
-  <body>
-    <a class="skip-link" href="#main">Lompat ke konten</a>
-
-    <header class="topbar">
-      <button
-        class="nav-toggle"
-        type="button"
-        data-nav-toggle
-        aria-expanded="false"
-        aria-controls="sidebar"
-        aria-label="Buka daftar isi"
-      >
-        <svg
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <line x1="3" y1="6" x2="21" y2="6" />
-          <line x1="3" y1="12" x2="21" y2="12" />
-          <line x1="3" y1="18" x2="21" y2="18" />
-        </svg>
-      </button>
-
-      <a class="topbar__brand" href="{{ '/' | url }}">
-        <span class="topbar__brand-mark">
-          <i class="fa-solid fa-book-open"></i>
-        </span>
-        <span class="topbar__brand-text">{{ site.shortTitle }}</span>
-      </a>
-
-      <div class="topbar__progress" aria-hidden="true">
-        <div class="topbar__progress-fill" data-reading-progress></div>
-      </div>
-
-      <div class="topbar__actions">
-        <button
-          class="icon-btn"
-          type="button"
-          data-theme-toggle
-          aria-label="Ganti tema terang/gelap"
-          title="Ganti tema"
-        >
-          <svg
-            class="theme-icon-light"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <circle cx="12" cy="12" r="5" />
-            <line x1="12" y1="1" x2="12" y2="3" />
-            <line x1="12" y1="21" x2="12" y2="23" />
-            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
-            <line x1="1" y1="12" x2="3" y2="12" />
-            <line x1="21" y1="12" x2="23" y2="12" />
-            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
-            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
-          </svg>
-          <svg
-            class="theme-icon-dark"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
-        </button>
-      </div>
-    </header>
+  <body data-page-url="{{ page.url }}">
+    <div class="noise" aria-hidden="true"></div>
+    <button
+      class="nav-toggle"
+      type="button"
+      data-nav-toggle
+      aria-expanded="false"
+      aria-controls="sidebar"
+      aria-label="Buka daftar isi"
+    >
+      <span class="nav-toggle__icon" aria-hidden="true">☰</span>
+      <span class="nav-toggle__label">Daftar isi</span>
+    </button>
 
     <div class="shell">
-      <div class="scrim" data-nav-scrim aria-hidden="true"></div>
+      <div class="nav-backdrop" data-nav-close aria-hidden="true"></div>
       {% include "partials/sidebar.njk" %}
 
-      <main id="main" class="main">{{ content | safe }}</main>
+      <main id="main" class="main">
+        <header class="topbar">
+          <div class="topbar__context">
+            {% if chapter %}
+              <span class="topbar__eyebrow">
+                {{ chapter.shortLabel }}
+              </span>
+              <span class="topbar__chapter">
+                {{ chapter.title }}
+              </span>
+            {% elif paragraph %}
+              <span class="topbar__eyebrow">§{{ paragraph.num }}</span>
+              <span class="topbar__chapter">{{ paragraph.chapterTitle }}</span>
+            {% else %}
+              <span class="topbar__eyebrow">
+                {{ site.workNote }}
+              </span>
+              <span class="topbar__chapter">
+                {{ site.workTitle }}
+              </span>
+            {% endif %}
+          </div>
+          <div class="topbar__actions">
+            <button class="topbar-btn" type="button" data-search-open>
+              <span>Search</span>
+              <kbd>⌘K</kbd>
+            </button>
+            <button
+              class="topbar-btn topbar-btn--icon"
+              type="button"
+              data-settings-open
+              aria-label="Preferensi membaca"
+            >
+              Aa
+            </button>
+          </div>
+        </header>
+
+        <div class="reader-shell" data-reader-shell>{{ content | safe }}</div>
+      </main>
     </div>
 
+    <div class="search-layer" data-search-layer hidden>
+      <div class="search-backdrop" data-search-close></div>
+      <section
+        class="search-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="search-title"
+      >
+        <div class="search-dialog__head">
+          <div>
+            <span class="eyebrow">NAVIGATOR</span>
+            <h2 id="search-title">Cari di seluruh buku</h2>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            data-search-close
+            aria-label="Tutup"
+          >
+            ×
+          </button>
+        </div>
+        <label class="search-input-wrap">
+          <span aria-hidden="true">⌕</span>
+          <input
+            data-search-input
+            type="search"
+            autocomplete="off"
+            aria-label="Cari di seluruh buku"
+            placeholder="Cari istilah, frasa, atau nomor paragraf…"
+          />
+          <kbd>Esc</kbd>
+        </label>
+        <div class="search-status" data-search-status>
+          Mulai mengetik untuk mencari.
+        </div>
+        <div class="search-results" data-search-results></div>
+      </section>
+    </div>
+
+    <div class="settings-layer" data-settings-layer hidden>
+      <div class="search-backdrop" data-settings-close></div>
+      <section
+        class="settings-dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="settings-title"
+      >
+        <div class="search-dialog__head">
+          <div>
+            <span class="eyebrow">READING MODE</span>
+            <h2 id="settings-title">Preferensi membaca</h2>
+          </div>
+          <button
+            class="icon-btn"
+            type="button"
+            data-settings-close
+            aria-label="Tutup"
+          >
+            ×
+          </button>
+        </div>
+        <div class="settings-grid">
+          <div class="setting-card">
+            <span class="setting-label">Tema</span>
+            <div class="segmented">
+              <button data-theme-choice="light">Terang</button>
+              <button data-theme-choice="sepia">Sepia</button>
+              <button data-theme-choice="dark">Gelap</button>
+            </div>
+          </div>
+          <div class="setting-card">
+            <span class="setting-label">Ukuran teks</span>
+            <div class="segmented">
+              <button data-font-size="small">A−</button>
+              <button data-font-size="medium">A</button>
+              <button data-font-size="large">A+</button>
+            </div>
+          </div>
+          <div class="setting-card setting-card--wide">
+            <span class="setting-label">Lebar bacaan</span>
+            <div class="segmented">
+              <button data-reading-width="narrow">Sempit</button>
+              <button data-reading-width="medium">Standar</button>
+              <button data-reading-width="wide">Lebar</button>
+            </div>
+          </div>
+        </div>
+        <p class="settings-note">
+          Preferensi disimpan di perangkat ini. Pintasan:
+          <kbd>⌘K</kbd>
+          pencarian,
+          <kbd>⌘,</kbd>
+          preferensi,
+          <kbd>Esc</kbd>
+          tutup.
+        </p>
+      </section>
+    </div>
+
+    <footer class="site-footer page--wide">
+      <p>© 2026 Mob Elazcona</p>
+      <p class="site-footer__credit">
+        Made with Claude Code inside Termux.
+      </p>
+    </footer>
+
+    <script>
+      window.CW6_SEARCH_URL = "{{ '/search.json' | url }}";
+    </script>
     <script src="{{ '/assets/js/nav.js' | url }}"></script>
   </body>
 </html>

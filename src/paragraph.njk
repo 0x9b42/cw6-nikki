@@ -9,85 +9,88 @@ eleventyComputed:
   title: "§{{ paragraph.num }} — {{ paragraph.chapterTitle }}"
   description: "Anotasi paragraf {{ paragraph.num }} dari {{ site.workTitle }} karya {{ site.workAuthor }}."
 ---
-<article class="page">
-  <p class="breadcrumb">
-    <a href="{{ '/' | url }}">{{ site.shortTitle }}</a>
-    <span class="breadcrumb__sep">›</span>
+<article
+  class="page page--focus"
+  data-focus-page
+  {% if paragraph.prev %}
+    data-prev-url="{{ ('/' + paragraph.prev.chapterId + '/' + paragraph.prev.slug + '/') | url }}" data-prev-label="§{{ paragraph.prev.num }}"
+  {% endif %}
+  {% if paragraph.next %}
+    data-next-url="{{ ('/' + paragraph.next.chapterId + '/' + paragraph.next.slug + '/') | url }}" data-next-label="§{{ paragraph.next.num }}"
+  {% endif %}
+>
+  <div class="focus-kicker">
     <a href="{{ ('/' + paragraph.chapterId + '/') | url }}">
-      {{ paragraph.chapterTitle }}
+      {{ paragraph.chapterShortLabel }}
     </a>
+    <span>›</span>
+    <span>§{{ paragraph.num }}</span>
     {% for h in paragraph.headingPath %}
-      <span class="breadcrumb__sep">›</span>
-      {% if loop.last %}
-        <span class="breadcrumb__current">{{ h.label }}. {{ h.title }}</span>
-      {% else %}
-        <span>{{ h.label }}. {{ h.title }}</span>
-      {% endif %}
+      <span>›</span>
+      <span class="focus-kicker__muted">{{ h.label }}. {{ h.title }}</span>
     {% endfor %}
-  </p>
-
-  <div id="{{ paragraph.slug }}" class="para para--standalone">
-    <a class="para__num" href="{{ ('/' + paragraph.chapterId + '/#' + paragraph.slug) | url }}" title="Lihat dalam konteks bab">§{{ paragraph.num }}</a>
-    <div class="para__text">&nbsp;{{ paragraph.html | safe }}</div>
   </div>
 
-  {% if paragraph.annotationHtml %}
-    <div class="annotation annotation--standalone">
-      <span class="annotation__label">Anotasi · §{{ paragraph.num }}</span>
-      {{ paragraph.annotationHtml | safe }}
+  <div class="focus-header">
+    <div>
+      <span class="eyebrow">PARAGRAPH</span>
+      <h1>§{{ paragraph.num }}</h1>
     </div>
+    <a
+      class="focus-context"
+      href="{{ ('/' + paragraph.chapterId + '/#' + paragraph.slug) | url }}"
+    >
+      Lihat konteks bab
+      <span>↗</span>
+    </a>
+  </div>
+
+  <section class="focus-source">
+    <div class="focus-source__label">TEXT / C. G. JUNG</div>
+    <div class="para__text">{{ paragraph.html | safe }}</div>
+  </section>
+
+  {% if paragraph.annotationHtml %}
+    <section class="annotation annotation--focus">
+      <div class="annotation__head">
+        <span>ANNOTATION</span>
+        <span>§{{ paragraph.num }}</span>
+      </div>
+      {{ paragraph.annotationHtml | safe }}
+    </section>
   {% else %}
-    <div class="empty-state empty-state--inline">Belum ada catatan.</div>
+    <section class="empty-state empty-state--focus">
+      <span class="empty-state__mark">∅</span>
+      <div>
+        <strong>Belum ada catatan.</strong>
+      </div>
+    </section>
   {% endif %}
 
-  <nav class="chapter-nav" aria-label="Navigasi paragraf">
+  <nav class="paragraph-nav" aria-label="Navigasi paragraf">
     {% if paragraph.prev %}
       <a
         href="{{ ('/' + paragraph.prev.chapterId + '/' + paragraph.prev.slug + '/') | url }}"
       >
-        <span class="chapter-nav__dir">
-          <svg
-            viewBox="0 0 24 24"
-            width="12"
-            height="12"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Prev
-        </span>
-        <span class="chapter-nav__title">§{{ paragraph.prev.num }}</span>
+        <small>← Sebelumnya</small>
+        <strong>§{{ paragraph.prev.num }}</strong>
       </a>
     {% else %}
       <span></span>
     {% endif %}
+    <a
+      class="paragraph-nav__middle"
+      href="{{ ('/' + paragraph.chapterId + '/#' + paragraph.slug) | url }}"
+    >
+      Daftar bab
+    </a>
     {% if paragraph.next %}
       <a
-        class="chapter-nav__next"
+        class="paragraph-nav__next"
         href="{{ ('/' + paragraph.next.chapterId + '/' + paragraph.next.slug + '/') | url }}"
       >
-        <span class="chapter-nav__dir">
-          Next
-          <svg
-            viewBox="0 0 24 24"
-            width="12"
-            height="12"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </span>
-        <span class="chapter-nav__title">§{{ paragraph.next.num }}</span>
+        <small>Berikutnya →</small>
+        <strong>§{{ paragraph.next.num }}</strong>
       </a>
     {% endif %}
   </nav>

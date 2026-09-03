@@ -2,112 +2,80 @@
 layout: layouts/base.njk
 permalink: /index.html
 ---
-<div class="hero">
-  <p class="hero__eyebrow">{{ site.workNote }}</p>
-  <h1>Psychological Types</h1>
-  <p class="hero__tagline">{{ site.tagline }}</p>
-
-  <div class="hero__meta">
-    <div class="hero__stat">
-      <span class="hero__stat-num">{{ stats.totalParagraphs }}</span>
-      <span class="hero__stat-label">Total paragraf</span>
+<section class="home-hero page--wide">
+  <div class="home-hero__grid">
+    <div>
+      <div class="eyebrow home-hero__eyebrow">{{ site.workNote }}</div>
+      <h1>{{ site.title }}</h1>
+      <p class="home-hero__tagline">{{ site.tagline }}</p>
+      <div class="hero-actions">
+        <a class="button button--primary" href="{{ '/intro/' | url }}">
+          Mulai membaca
+          <span>→</span>
+        </a>
+        <a class="button button--ghost" href="{{ '/catatan/' | url }}">
+          Buka catatan
+          <span>{{ stats.totalAnnotated }}</span>
+        </a>
+      </div>
     </div>
-    <div class="hero__stat">
-      <span class="hero__stat-num">{{ stats.totalAnnotated }}</span>
-      <span class="hero__stat-label">Dianotasi</span>
-    </div>
-    <div class="hero__stat">
-      <span class="hero__stat-num">{{ chapters.length }}</span>
-      <span class="hero__stat-label">Chapter</span>
-    </div>
+    <aside class="hero-note">
+      <div class="eyebrow">STATUS EDISI</div>
+      <div class="hero-note__stat">
+        <strong>{{ stats.totalAnnotated }}</strong>
+        <span>/ {{ stats.totalParagraphs }} § dianotasi</span>
+      </div>
+      <div class="progress-bar progress-bar--hero">
+        <span
+          class="progress-bar__fill"
+          style="width: {{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%"
+        ></span>
+      </div>
+      <p>
+        Nomor paragraf mengikuti edisi
+        <em>The Collected Works of C. G. Jung, Volume 6</em>
+        . Teks sumber dan catatan sengaja dipisahkan sebagai dua lapisan pembacaan.
+      </p>
+    </aside>
   </div>
+</section>
 
-  <div class="hero__progress-row">
-    <div class="hero__progress">
-      <div
-        class="hero__progress-fill"
-        style="width: {{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%"
-      ></div>
-    </div>
-    <span class="hero__progress-text">{{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%</span>
-    <span
-      style="font-family: var(--font-sans); font-size: var(--step--1); color: var(--ink-3);"
-    >
-      diselesaikan
-    </span>
-  </div>
+<div class="home-divider page--wide">
+  <span>CHAPTERS</span>
+  <i></i>
+  <span>READING MAP</span>
 </div>
 
-<div class="page page--wide">
-  <div class="section-head">
-    <h2>Chapters</h2>
-    <span class="section-head__hint">§0 — §987 · click to read</span>
+<section
+  class="page--wide chapter-browser"
+  aria-labelledby="chapter-browser-title"
+>
+  <div class="section-intro">
+    <div>
+      <span class="eyebrow">NAVIGASI</span>
+    </div>
   </div>
 
   <div class="chapter-grid">
     {% for chapter in chapters %}
       <a class="chapter-card" href="{{ ('/' + chapter.id + '/') | url }}">
-        {% if chapter.symbol %}
-          <span class="chapter-card__symbol">Chapter {{ chapter.symbol }}</span>
-        {% else %}
-          <span class="chapter-card__symbol">
-            {{ chapter.id }}
-          </span>
-        {% endif %}
+        <div class="chapter-card__top">
+          <span>{{ chapter.shortLabel }}</span>
+          <span>{{ chapter.paragraphCount }} §</span>
+        </div>
         <span class="chapter-card__title">{{ chapter.title }}</span>
-        <span class="chapter-card__meta">
+        <div class="chapter-card__bottom">
           <span>§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
-          {% if chapter.annotatedCount > 0 %}
-            <span class="chapter-card__annot-badge">
-              {{ chapter.annotatedCount }}
-            </span>
-          {% else %}
-            <span
-              class="chapter-card__annot-badge chapter-card__annot-badge--empty"
-            >
-              0
-            </span>
-          {% endif %}
-        </span>
-        <svg
-          class="chapter-card__chevron"
-          viewBox="0 0 24 24"
-          width="16"
-          height="16"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          aria-hidden="true"
-        >
-          <polyline points="9 18 15 12 9 6" />
-        </svg>
+          <span class="chapter-card__annotation">
+            {{ chapter.annotatedCount }}
+            catatan
+            {% if chapter.annotatedCount %}
+              ↗
+            {% endif %}
+          </span>
+        </div>
+        <span class="chapter-card__arrow" aria-hidden="true">↗</span>
       </a>
     {% endfor %}
   </div>
-
-  <p
-    style="margin-top: 2.5rem; font-family: var(--font-sans); font-size: var(--step--1);"
-  >
-    <a href="{{ '/catatan/' | url }}">
-      Lihat semua paragraf yang sudah dianotasi →
-    </a>
-  </p>
-</div>
-
-<footer class="site-footer">
-  <div class="site-footer__meta">
-    &copy; 2026
-    <strong>{{ site.author }}</strong>
-    <br />
-    Built with Claude code inside Termux.
-  </div>
-  <div class="site-footer__hint">
-    <span class="kbd">J</span>
-    paragraf berikutnya
-    <span style="margin: 0 0.3rem;">·</span>
-    <span class="kbd">K</span>
-    sebelumnya
-  </div>
-</footer>
+</section>

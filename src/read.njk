@@ -7,56 +7,90 @@ permalink: "/{{ chapter.id }}/index.html"
 layout: layouts/base.njk
 eleventyComputed:
   title: "{{ chapter.title }}"
-  description: "Catatan untuk {{ chapter.title }}, dari {{ site.workTitle }} karya {{ site.workAuthor }}."
+  description: "Anotasi paragraf demi paragraf untuk {{ chapter.title }}, dari {{ site.workTitle }} karya {{ site.workAuthor }}."
 ---
-<article class="page">
-  <header class="chapter-header">
-    {% if chapter.symbol %}
-      <p class="chapter-header__symbol">Bagian {{ chapter.symbol }}</p>
-    {% endif %}
-    <h1>{{ chapter.title }}</h1>
-    <div class="chapter-header__meta">
-      <span>§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
-      <span>·</span>
-      <span>{{ chapter.paragraphCount }} paragraf</span>
-      {% if chapter.annotatedCount > 0 %}
-        <span>·</span>
-        <span>{{ chapter.annotatedCount }} dianotasi</span>
-      {% endif %}
+<article
+  class="page page--reading"
+  data-chapter-page
+  data-total-paragraphs="{{ chapter.paragraphCount }}"
+>
+  <header class="chapter-hero">
+    <div class="chapter-hero__kicker">
+      <span class="chapter-hero__symbol">{{ chapter.shortLabel }}</span>
+      <span>§{{ chapter.firstParagraph }}—{{ chapter.lastParagraph }}</span>
     </div>
-    <br />
-    <div style="font-size: small; color: var(--ink-3)">
-      <i>{{ chapter.summary }}</i>
+    <h1>{{ chapter.title }}</h1>
+    <div class="chapter-hero__meta">
+      <span>{{ chapter.paragraphCount }} paragraf</span>
+      <span>{{ chapter.annotatedCount }} dianotasi</span>
+      <span>{{ (chapter.annotatedCount / chapter.paragraphCount * 100) | round(1) }}% teranotasi</span>
     </div>
   </header>
 
-  <div class="chapter-content">
+  <div class="reading-status" data-reading-status>
+    <span>
+      <b data-current-para>§{{ chapter.firstParagraph }}</b>
+      / §
+      {{ chapter.lastParagraph }}
+    </span>
+    <span class="reading-status__track"><i data-reading-progress></i></span>
+    <span data-reading-percent>0%</span>
+  </div>
+
+  <div class="chapter-prose">
     {% for item in chapter.items %}
       {% if item.type == "heading" %}
         {% if item.level == 1 %}
-          <h2 class="section-heading section-heading--level-1">
-            <span class="section-heading__label">{{ item.label }}.</span>
+          <h2
+            id="section-{{ loop.index }}"
+            class="section-heading section-heading--level-1"
+          >
+            <span>{{ item.label }}</span>
             {{ item.title }}
           </h2>
         {% endif %}
         {% if item.level == 2 %}
-          <h3 class="section-heading section-heading--level-2">
-            <span class="section-heading__label">{{ item.label }}.</span>
+          <h3
+            id="section-{{ loop.index }}"
+            class="section-heading section-heading--level-2"
+          >
+            <span>{{ item.label }}</span>
             {{ item.title }}
           </h3>
         {% endif %}
         {% if item.level >= 3 %}
-          <h4 class="section-heading section-heading--level-3">
+          <h4
+            id="section-{{ loop.index }}"
+            class="section-heading section-heading--level-3"
+          >
+            <span>·</span>
             {{ item.title }}
           </h4>
         {% endif %}
       {% else %}
-        <div id="{{ item.slug }}" class="para">
-
-          <div class="para__text">
-            <a class="para__num {% if item.annotationHtml %}para__num--annotated{% endif %}" href="{{ ('/' + chapter.id + '/' + item.slug + '/') | url }}" title="{% if item.annotationHtml %}Catatan{% else %}Paragraf{% endif %}">{{ item.num }}&nbsp;&nbsp;&nbsp;&nbsp;</a>
-            {{ item.html | safe }}
-          </div>
+        <div
+          id="{{ item.slug }}"
+          class="
+            para
+            {% if item.annotationHtml %}
+              para--has-annotation
+            {% endif %}
+          "
+          data-paragraph
+          data-para-number="{{ item.num }}"
+          data-has-annotation="{{ 'true' if item.annotationHtml else 'false' }}"
+        >
+          <a class="para__num {% if item.annotationHtml %}para__num--annotated{% endif %}" href="{{ ('/' + chapter.id + '/' + item.slug + '/') | url }}" title="{% if item.annotationHtml %}Baca anotasi §{{ item.num }}{% else %}Buka §{{ item.num }}{% endif %}">{{ item.num }}</a>
+          <div class="para__text">{{ item.html | safe }}</div>
+          {% if item.annotationHtml %}
+            <a
+              class="para__badge"
+              href="{{ ('/' + chapter.id + '/' + item.slug + '/') | url }}"
+            >
+              catatan
+              <span>→</span>
+            </a>
+          {% endif %}
         </div>
       {% endif %}
     {% endfor %}
@@ -64,60 +98,23 @@ eleventyComputed:
 
   <nav class="chapter-nav" aria-label="Navigasi bab">
     {% if chapter.prev %}
-      <a href="{{ ('/' + chapter.prev.id + '/') | url }}">
-        <span class="chapter-nav__dir">
-          <svg
-            viewBox="0 0 24 24"
-            width="12"
-            height="12"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="15 18 9 12 15 6" />
-          </svg>
-          Prev
-        </span>
-        <span class="chapter-nav__title">
-          {% if chapter.prev.symbol %}
-            {{ chapter.prev.symbol }}.
-          {% endif %}
-          {{ chapter.prev.title }}
-        </span>
+      <a
+        class="chapter-nav__card"
+        href="{{ ('/' + chapter.prev.id + '/') | url }}"
+      >
+        <small>← Prev</small>
+        <strong>{{ chapter.prev.symbol or '' }} {{ chapter.prev.title }}</strong>
       </a>
     {% else %}
       <span></span>
     {% endif %}
     {% if chapter.next %}
       <a
-        class="chapter-nav__next"
+        class="chapter-nav__card chapter-nav__next"
         href="{{ ('/' + chapter.next.id + '/') | url }}"
       >
-        <span class="chapter-nav__dir">
-          Next
-          <svg
-            viewBox="0 0 24 24"
-            width="12"
-            height="12"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2.5"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            aria-hidden="true"
-          >
-            <polyline points="9 18 15 12 9 6" />
-          </svg>
-        </span>
-        <span class="chapter-nav__title">
-          {% if chapter.next.symbol %}
-            {{ chapter.next.symbol }}.
-          {% endif %}
-          {{ chapter.next.title }}
-        </span>
+        <small>Next →</small>
+        <strong>{{ chapter.next.symbol or '' }} {{ chapter.next.title }}</strong>
       </a>
     {% endif %}
   </nav>

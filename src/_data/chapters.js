@@ -1,18 +1,10 @@
-// Data file inti. Menggabungkan tiga sumber:
-//   1. toc.json          -> struktur bab/sub-bab dan judul-judulnya
-//   2. _content/cw6/**    -> teks asli tiap paragraf (hasil ekstraksi buku)
-//   3. _annotations/cw6/** -> anotasi markdown milikmu (opsional, per paragraf)
-//
-// Hasilnya: array "chapters", masing-masing berisi urutan item (heading /
-// paragraph) siap-render, sudah tercampur sesuai posisi aslinya di buku.
-
 const fs = require("fs");
 const path = require("path");
 const MarkdownIt = require("markdown-it");
 const toc = require("./toc.json");
 const site = require("./site.js");
 
-const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
+const md = new MarkdownIt({ html: true, linkify: true, typographer: true });
 
 const CONTENT_DIR = path.join(__dirname, "..", "_content", "cw6");
 const ANNOTATION_DIR = path.join(__dirname, "..", "_annotations", "cw6");
@@ -32,8 +24,6 @@ function pad3(n) {
   return String(n).padStart(3, "0");
 }
 
-// Perbaiki path gambar absolut ("/assets/...") agar tetap benar walau situs
-// di-deploy di bawah sub-path (GitHub Pages project page).
 function withPathPrefix(html) {
   const prefix = site.pathPrefix.endsWith("/")
     ? site.pathPrefix
@@ -42,8 +32,6 @@ function withPathPrefix(html) {
   return html.replace(/src="\/assets\//g, `src="${prefix}assets/`);
 }
 
-// Ratakan struktur "sub" (yang bisa bersarang beberapa level) jadi daftar datar
-// heading, masing-masing menandai paragraf nomor berapa heading itu mulai muncul.
 function flattenHeadings(subArray, level, acc) {
   if (!subArray || !subArray.length) return acc;
   for (const node of subArray) {
@@ -80,8 +68,6 @@ function loadChapter(key, order) {
 
   let annotatedCount = 0;
   const items = [];
-  // Jejak heading yang sedang aktif per level, dipakai sebagai breadcrumb
-  // di halaman paragraf tersendiri (mis. "4. Nominalism and Realism > b. ...").
   const activePath = [];
 
   for (const num of numbers) {
@@ -132,8 +118,8 @@ function loadChapter(key, order) {
     key,
     order,
     symbol: toc[key].symbol,
+    shortLabel: toc[key].symbol || folder.toUpperCase(),
     title: toc[key].title,
-    summary: toc[key].summary,
     paragraphCount: numbers.length,
     annotatedCount,
     firstParagraph: numbers.length ? numbers[0] : null,
@@ -157,6 +143,7 @@ module.exports = function () {
             id: chapters[i - 1].id,
             title: chapters[i - 1].title,
             symbol: chapters[i - 1].symbol,
+            shortLabel: chapters[i - 1].shortLabel,
           }
         : null;
     c.next =
@@ -165,6 +152,7 @@ module.exports = function () {
             id: chapters[i + 1].id,
             title: chapters[i + 1].title,
             symbol: chapters[i + 1].symbol,
+            shortLabel: chapters[i + 1].shortLabel,
           }
         : null;
   });

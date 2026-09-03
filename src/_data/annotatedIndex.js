@@ -1,5 +1,3 @@
-// Daftar datar semua paragraf yang sudah punya anotasi, lintas bab —
-// dipakai oleh halaman /anotasi/.
 const getChapters = require("./chapters.js");
 
 module.exports = function () {
@@ -13,6 +11,7 @@ module.exports = function () {
           chapterId: c.id,
           chapterTitle: c.title,
           symbol: c.symbol,
+          shortLabel: c.shortLabel,
           num: item.num,
           slug: item.slug,
           paragraphHtml: item.html,

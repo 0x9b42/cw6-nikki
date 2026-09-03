@@ -2,7 +2,7 @@
   "name": "cw6-nikki",
   "version": "1.0.0",
   "private": true,
-  "description": "Anotasi hermeneutik paragraf-demi-paragraf atas Psychological Types (CW 6) karya C.G. Jung, dibangun dengan Eleventy.",
+  "description": "Mob's study notes on Psychological Types (CW 6) by C.G. Jung",
   "scripts": {
     "start": "eleventy --serve",
     "build": "eleventy",

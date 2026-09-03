@@ -1,80 +1,76 @@
-<aside id="sidebar" class="sidebar" aria-label="Daftar isi">
-  <div class="sidebar__brand-meta">
-    <p class="sidebar__work">{{ site.workTitle }}</p>
-    <p class="sidebar__work-author">{{ site.workAuthor }} · {{ site.workNote }}</p>
-  </div>
-
-  <div class="sidebar__section">
-    <div class="sidebar__progress">
-      <span class="sidebar__progress-num">{{ stats.totalAnnotated }}</span>
-      <span style="color: var(--ink-3);">/ {{ stats.totalParagraphs }}</span>
-      <div class="sidebar__progress-bar">
-        <div
-          class="sidebar__progress-fill"
-          style="width: {{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%"
-        ></div>
-      </div>
-    </div>
-    <p
-      style="font-size: 0.72rem; color: var(--ink-3); margin: 0.35rem 0 0; line-height: 1.4;"
-    >
-      paragraf dianotasi sejauh ini
-    </p>
-  </div>
-
-  <div class="sidebar__section">
-    <p class="sidebar__label">Daftar Isi</p>
-    <ul class="toc">
-      {% for chapter in chapters %}
-        {% set chapterUrl = ('/' + chapter.id + '/') | url %}
-        {% set isCurrent = page.url | startsWith(chapterUrl) %}
-        <li
-          class="
-            toc__item
-            {% if isCurrent %}
-              toc__item--open
-            {% endif %}
-          "
-        >
-          <a
-            class="toc__chapter"
-            href="{{ ('/' + chapter.id + '/') | url }}"
-            {% if isCurrent %}
-              aria-current="page"
-            {% endif %}
-          >
-            <span class="toc__symbol">{{ chapter.symbol or "·" }}</span>
-            <span class="toc__title">{{ chapter.title }}</span>
-            {% if chapter.annotatedCount > 0 %}
-              <span class="toc__count">
-                {{ chapter.annotatedCount }}
-              </span>
-            {% endif %}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-  </div>
-
-  <div class="sidebar__footer">
-    <a class="sidebar__footer-link" href="{{ '/anotasi/' | url }}">
-      <svg
-        viewBox="0 0 24 24"
-        width="14"
-        height="14"
-        fill="none"
-        stroke="currentColor"
-        stroke-width="2"
-        stroke-linecap="round"
-        stroke-linejoin="round"
-        aria-hidden="true"
-      >
-        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
-        <path
-          d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
-        />
-      </svg>
-      Indeks anotasi
+<aside id="sidebar" class="sidebar" aria-label="Navigasi utama">
+  <div class="sidebar__top">
+    <a class="sidebar__brand" href="{{ '/' | url }}">
+      <span class="brand-mark" aria-hidden="true">CW</span>
+      <span>{{ site.shortTitle }}</span>
     </a>
+    <button
+      class="icon-btn sidebar__close"
+      type="button"
+      data-nav-close
+      aria-label="Tutup daftar isi"
+    >
+      ×
+    </button>
+  </div>
+
+  <p class="sidebar__work">
+    <em>{{ site.workTitle }}</em>
+    <br />
+    {{ site.workAuthor }}
+  </p>
+
+  <button class="sidebar-search" type="button" data-search-open>
+    <span class="sidebar-search__icon" aria-hidden="true">⌕</span>
+    <span>Cari paragraf, istilah…</span>
+    <kbd>⌘K</kbd>
+  </button>
+
+  <div class="sidebar__progress-card">
+    <div class="eyebrow">PROGRESS CATATAN</div>
+    <div class="sidebar__progress-row">
+      <strong>{{ stats.totalAnnotated }}</strong>
+      <span>/ {{ stats.totalParagraphs }}</span>
+      <span class="sidebar__progress-percent">{{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%</span>
+    </div>
+    <div class="progress-bar">
+      <span
+        class="progress-bar__fill"
+        style="width: {{ (stats.totalAnnotated / stats.totalParagraphs * 100) | round(1) }}%"
+      ></span>
+    </div>
+  </div>
+
+  <div class="sidebar__section-head">
+    <span>ISI</span>
+    <a href="{{ '/catatan/' | url }}">{{ annotatedIndex.length }} catatan</a>
+  </div>
+
+  <nav class="toc" aria-label="Daftar bab">
+    <a class="toc__home" href="{{ '/' | url }}">Beranda</a>
+    {% for chapter in chapters %}
+      <a
+        class="toc__link"
+        href="{{ ('/' + chapter.id + '/') | url }}"
+        {% if page.url == ('/' + chapter.id + '/') | url %}
+          aria-current="page"
+        {% endif %}
+      >
+        <span class="toc__symbol">{{ chapter.symbol or "·" }}</span>
+        <span class="toc__body">
+          <span class="toc__title">{{ chapter.title }}</span>
+          <span class="toc__meta">§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
+        </span>
+        <span class="toc__count">{{ chapter.annotatedCount }}</span>
+      </a>
+    {% endfor %}
+  </nav>
+
+  <div class="sidebar__bottom">
+    <a href="{{ '/catatan/' | url }}">Catatan &amp; anotasi <span>→</span></a>
+    <button type="button" data-settings-open>
+      Preferensi membaca
+      <span>⌘,</span>
+    </button>
   </div>
 </aside>
