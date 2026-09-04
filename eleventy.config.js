@@ -14,7 +14,6 @@ module.exports = function (eleventyConfig) {
     return text.length > length ? text.slice(0, length).trim() + "…" : text;
   });
 
-  eleventyConfig.addFilter("pad3", (n) => String(n).padStart(3, "0"));
   eleventyConfig.addFilter("json", (value) => JSON.stringify(value));
 
   eleventyConfig.setServerOptions({ port: 8080 });

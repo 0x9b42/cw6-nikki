@@ -78,12 +78,6 @@ eleventyComputed:
     {% else %}
       <span></span>
     {% endif %}
-    <a
-      class="paragraph-nav__middle"
-      href="{{ ('/' + paragraph.chapterId + '/#' + paragraph.slug) | url }}"
-    >
-      Daftar bab
-    </a>
     {% if paragraph.next %}
       <a
         class="paragraph-nav__next"

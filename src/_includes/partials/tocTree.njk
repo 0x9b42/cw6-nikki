@@ -1,0 +1,20 @@
+{% macro subList(nodes, chapterId) %}
+  {% for node in nodes %}
+    <a
+      class="toc-sub__link"
+      style="--lvl: {{ node.level }}"
+      href="{{ ('/' + chapterId + '/#' + node.id) | url }}"
+    >
+      {% if node.label.length <= 3 %}
+        <span class="toc-sub__label">
+          {{ node.label }}
+        </span>
+      {% endif %}
+      <span class="toc-sub__title">{{ node.title }}</span>
+      <span class="toc-sub__meta">{{ node.rangeLabel }}</span>
+    </a>
+    {% if node.sub.length %}
+      {{ subList(node.sub, chapterId) }}
+    {% endif %}
+  {% endfor %}
+{% endmacro %}

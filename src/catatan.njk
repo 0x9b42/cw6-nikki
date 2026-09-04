@@ -2,57 +2,59 @@
 layout: layouts/base.njk
 permalink: /catatan/index.html
 title: Indeks Catatan
-description: Semua paragraf Psychological Types yang sudah dianotasi.
+description: Daftar paragraf Psychological Types yang sudah dianotasi.
 ---
 <section class="page page--wide annotations-page">
   <header class="index-header">
     <div>
       <span class="eyebrow">ANNOTATION INDEX</span>
-      <h1>Semua catatan.</h1>
+      <h1>Daftar catatan.</h1>
+      <p>
+        Paragraf-paragraf yang sudah punya catatan, dikelompokkan per bab. Klik salah satu untuk membuka halaman paragrafnya — catatannya tampil di sana.
+      </p>
     </div>
   </header>
 
   <div class="index-tools">
-    <span data-annotation-count>{{ annotatedIndex.length }} hasil</span>
+    <span data-annotation-count>{{ stats.totalAnnotated }} hasil</span>
     <label>
       <span>Filter</span>
       <input
         data-annotation-filter
         type="search"
-        placeholder="Cari isi catatan…"
+        placeholder="Cari bab atau nomor paragraf…"
       />
     </label>
   </div>
 
-  {% if annotatedIndex.length == 0 %}
+  {% if stats.totalAnnotated == 0 %}
     <p class="empty-state">Belum ada catatan yang ditulis.</p>
   {% endif %}
 
   <div data-annotation-list>
-    {% for entry in annotatedIndex %}
-      <article
-        id="{{ entry.slug }}"
-        class="annot-entry"
-        data-annotation-entry
-        data-search-text="{{ entry.chapterTitle }} {{ entry.num }} {{ entry.annotationHtml | excerpt(600) }}"
-      >
-        <div class="annot-entry__rail">
-          <span>§{{ entry.num }}</span>
-          <i></i>
+    {% for group in annotatedIndex %}
+      <section class="note-group" data-annotation-group>
+        <header class="note-group__head">
+          <a href="{{ ('/' + group.chapterId + '/') | url }}">{{ group.shortLabel }} · {{ group.chapterTitle }}</a>
+          <span class="note-group__count">{{ group.count }} §</span>
+        </header>
+        <div class="note-group__rows">
+          {% for entry in group.entries %}
+            <a
+              class="note-row"
+              data-annotation-entry
+              href="{{ ('/' + group.chapterId + '/' + entry.slug + '/') | url }}"
+              data-search-text="{{ group.chapterTitle }} §{{ entry.num }} {{ entry.excerpt }}"
+            >
+              <span class="note-row__num">§{{ entry.num }}</span>
+              <span class="note-row__text">{{ entry.excerpt }}</span>
+            </a>
+          {% endfor %}
         </div>
-        <div class="annot-entry__body">
-          <a class="annot-entry__chapter" href="{{ ('/' + entry.chapterId + '/' + entry.slug + '/') | url }}">{{ entry.shortLabel }} · {{ entry.chapterTitle }}</a>
-          <p class="annot-entry__source">
-            {{ entry.paragraphHtml | excerpt(240) }}
-          </p>
-          <div class="annotation annotation--index">
-            {{ entry.annotationHtml | safe }}
-          </div>
-        </div>
-      </article>
+      </section>
     {% endfor %}
   </div>
   <p class="empty-state empty-state--hidden" data-annotation-empty>
-    Tak ada catatan yang cocok.
+    Tak ada paragraf yang cocok.
   </p>
 </section>

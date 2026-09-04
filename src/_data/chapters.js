@@ -32,19 +32,45 @@ function withPathPrefix(html) {
   return html.replace(/src="\/assets\//g, `src="${prefix}assets/`);
 }
 
-function flattenHeadings(subArray, level, acc) {
-  if (!subArray || !subArray.length) return acc;
+// Bangun pohon sub-bab dari toc.json. Tiap node dapat id anchor stabil
+// (mis. "s8") yang dipakai read.njk sebagai id heading DAN dipakai sidebar /
+// kartu bab di beranda sebagai target link "#s8". Id di-dedupe kalau dua
+// heading mulai di paragraf yang sama (mis. CH08: bagian 2 dan sub a sama-sama
+// §518) -> "s518" dan "s518-2".
+function buildTree(subArray, level, idCounts) {
+  if (!subArray || !subArray.length) return [];
+  const nodes = [];
   for (const node of subArray) {
     const [label, data] = Object.entries(node)[0];
-    acc.push({
-      atParagraph: data.para_range[0],
-      level,
+    const at = data.para_range[0];
+    const end = data.para_range.length > 1 ? data.para_range[1] : at;
+    idCounts[at] = (idCounts[at] || 0) + 1;
+    nodes.push({
       label,
       title: data.title,
+      at,
+      end,
+      rangeLabel: end > at ? `§${at}–${end}` : `§${at}`,
+      id: idCounts[at] === 1 ? `s${at}` : `s${at}-${idCounts[at]}`,
+      level,
+      sub: buildTree(data.sub, level + 1, idCounts),
     });
-    flattenHeadings(data.sub, level + 1, acc);
+  }
+  return nodes;
+}
+
+function flattenTree(nodes, acc) {
+  for (const n of nodes) {
+    acc.push(n);
+    flattenTree(n.sub, acc);
   }
   return acc;
+}
+
+function countTree(nodes) {
+  let total = 0;
+  for (const n of nodes) total += 1 + countTree(n.sub);
+  return total;
 }
 
 function loadChapter(key, order) {
@@ -59,11 +85,14 @@ function loadChapter(key, order) {
     .map((f) => parseInt(f.match(/^p(\d+)\.html$/)[1], 10))
     .sort((a, b) => a - b);
 
-  const headings = flattenHeadings(toc[key].sub, 1, []);
+  // Pohon sub-bab (untuk dropdown sidebar & kartu bab di beranda) plus
+  // versi datar-nya untuk menyisipkan heading di tengah aliran paragraf.
+  const idCounts = {};
+  const tree = buildTree(toc[key].sub, 1, idCounts);
+  const flat = flattenTree(tree, []);
   const headingsByParagraph = {};
-  for (const h of headings) {
-    (headingsByParagraph[h.atParagraph] =
-      headingsByParagraph[h.atParagraph] || []).push(h);
+  for (const h of flat) {
+    (headingsByParagraph[h.at] = headingsByParagraph[h.at] || []).push(h);
   }
 
   let annotatedCount = 0;
@@ -78,6 +107,7 @@ function loadChapter(key, order) {
           level: h.level,
           label: h.label,
           title: h.title,
+          id: h.id,
         });
         activePath[h.level - 1] = {
           level: h.level,
@@ -124,6 +154,8 @@ function loadChapter(key, order) {
     annotatedCount,
     firstParagraph: numbers.length ? numbers[0] : null,
     lastParagraph: numbers.length ? numbers[numbers.length - 1] : null,
+    subCount: countTree(tree),
+    tree,
     items,
   };
 }

@@ -1,7 +1,25 @@
+{% import "partials/tocTree.njk" as tocTree %}
 <aside id="sidebar" class="sidebar" aria-label="Navigasi utama">
   <div class="sidebar__top">
     <a class="sidebar__brand" href="{{ '/' | url }}">
-      <span class="brand-mark" aria-hidden="true">CW</span>
+      <span class="brand-mark" aria-hidden="true">
+        <svg
+          viewBox="0 0 24 24"
+          width="13"
+          height="13"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="1.9"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+          <path
+            d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"
+          ></path>
+        </svg>
+      </span>
       <span>{{ site.shortTitle }}</span>
     </a>
     <button
@@ -43,33 +61,65 @@
 
   <div class="sidebar__section-head">
     <span>ISI</span>
-    <a href="{{ '/catatan/' | url }}">{{ annotatedIndex.length }} catatan</a>
+    <a href="{{ '/catatan/' | url }}">{{ stats.totalAnnotated }} catatan</a>
   </div>
 
   <nav class="toc" aria-label="Daftar bab">
     <a class="toc__home" href="{{ '/' | url }}">Beranda</a>
     {% for chapter in chapters %}
-      <a
-        class="toc__link"
-        href="{{ ('/' + chapter.id + '/') | url }}"
-        {% if page.url == ('/' + chapter.id + '/') | url %}
-          aria-current="page"
-        {% endif %}
-      >
-        <span class="toc__symbol">{{ chapter.symbol or "·" }}</span>
-        <span class="toc__body">
-          <span class="toc__title">{{ chapter.title }}</span>
-          <span class="toc__meta">§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
-        </span>
-        <span class="toc__count">{{ chapter.annotatedCount }}</span>
-      </a>
+      {% set chapterPath = '/' + chapter.id + '/' %}
+      {% set inChapter = page.url.indexOf(chapterPath) != -1 %}
+      {% if chapter.tree.length %}
+        <details
+          class="toc__group"
+          {% if inChapter %}
+            open
+          {% endif %}
+        >
+          <summary class="toc__summary">
+            <a
+              class="toc__link"
+              href="{{ chapterPath | url }}"
+              {% if inChapter %}
+                aria-current="page"
+              {% endif %}
+            >
+              <span class="toc__symbol">{{ chapter.symbol or "·" }}</span>
+              <span class="toc__body">
+                <span class="toc__title">{{ chapter.title }}</span>
+                <span class="toc__meta">§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
+              </span>
+              <span class="toc__count">{{ chapter.annotatedCount }}</span>
+            </a>
+            <span class="toc__chev" aria-hidden="true">▸</span>
+          </summary>
+          <div class="toc__sub">
+            {{ tocTree.subList(chapter.tree, chapter.id) }}
+          </div>
+        </details>
+      {% else %}
+        <a
+          class="toc__link"
+          href="{{ chapterPath | url }}"
+          {% if inChapter %}
+            aria-current="page"
+          {% endif %}
+        >
+          <span class="toc__symbol">{{ chapter.symbol or "·" }}</span>
+          <span class="toc__body">
+            <span class="toc__title">{{ chapter.title }}</span>
+            <span class="toc__meta">§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
+          </span>
+          <span class="toc__count">{{ chapter.annotatedCount }}</span>
+        </a>
+      {% endif %}
     {% endfor %}
   </nav>
 
   <div class="sidebar__bottom">
     <a href="{{ '/catatan/' | url }}">Catatan &amp; anotasi <span>→</span></a>
     <a href="{{ '/book-copyright/' | url }}">
-      Copyright &amp; source 
+      Copyright &amp; source
       <span>→</span>
     </a>
     <button type="button" data-settings-open>

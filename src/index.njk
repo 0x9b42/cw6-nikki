@@ -2,7 +2,9 @@
 layout: layouts/base.njk
 permalink: /index.html
 ---
+{% import "partials/tocTree.njk" as tocTree %}
 <section class="home-hero page--wide">
+
   <div class="home-hero__grid">
     <div>
       <div class="eyebrow home-hero__eyebrow">{{ site.workNote }}</div>
@@ -58,24 +60,47 @@ permalink: /index.html
 
   <div class="chapter-grid">
     {% for chapter in chapters %}
-      <a class="chapter-card" href="{{ ('/' + chapter.id + '/') | url }}">
-        <div class="chapter-card__top">
-          <span>{{ chapter.shortLabel }}</span>
-          <span>{{ chapter.paragraphCount }} §</span>
-        </div>
-        <span class="chapter-card__title">{{ chapter.title }}</span>
-        <div class="chapter-card__bottom">
-          <span>§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
-          <span class="chapter-card__annotation">
-            {{ chapter.annotatedCount }}
-            catatan
-            {% if chapter.annotatedCount %}
-              ↗
-            {% endif %}
-          </span>
-        </div>
-        <span class="chapter-card__arrow" aria-hidden="true">↗</span>
-      </a>
+      <article
+        class="
+          chapter-card
+          {% if chapter.tree.length %}
+            chapter-card--has-sub
+          {% endif %}
+        "
+      >
+        <a
+          class="chapter-card__main"
+          href="{{ ('/' + chapter.id + '/') | url }}"
+        >
+          <div class="chapter-card__top">
+            <span>{{ chapter.shortLabel }}</span>
+            <span>{{ chapter.paragraphCount }} §</span>
+          </div>
+          <span class="chapter-card__title">{{ chapter.title }}</span>
+          <div class="chapter-card__bottom">
+            <span>§{{ chapter.firstParagraph }}–{{ chapter.lastParagraph }}</span>
+            <span class="chapter-card__annotation">
+              {{ chapter.annotatedCount }}
+              catatan
+              {% if chapter.annotatedCount %}
+                ↗
+              {% endif %}
+            </span>
+          </div>
+          <span class="chapter-card__arrow" aria-hidden="true">↗</span>
+        </a>
+        {% if chapter.tree.length %}
+          <details class="chapter-card__toc">
+            <summary class="chapter-card__toc-summary">
+              <span>{{ chapter.subCount }} sub-bab</span>
+              <span class="chapter-card__toc-chev" aria-hidden="true">▸</span>
+            </summary>
+            <div class="chapter-card__toc-body">
+              {{ tocTree.subList(chapter.tree, chapter.id) }}
+            </div>
+          </details>
+        {% endif %}
+      </article>
     {% endfor %}
   </div>
 </section>

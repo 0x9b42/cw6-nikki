@@ -271,6 +271,9 @@
     var entries = Array.prototype.slice.call(
       document.querySelectorAll("[data-annotation-entry]"),
     );
+    var groups = Array.prototype.slice.call(
+      document.querySelectorAll("[data-annotation-group]"),
+    );
     var empty = document.querySelector("[data-annotation-empty]");
     var count = document.querySelector("[data-annotation-count]");
     if (!input || !entries.length) return;
@@ -283,6 +286,12 @@
           (entry.dataset.searchText || "").toLowerCase().indexOf(q) !== -1;
         entry.hidden = !ok;
         if (ok) shown++;
+      });
+      // Sembunyikan juga kepala grup yang semua barisnya sudah terfilter.
+      groups.forEach(function (group) {
+        group.hidden = !group.querySelector(
+          "[data-annotation-entry]:not([hidden])",
+        );
       });
       if (empty) empty.classList.toggle("empty-state--hidden", shown !== 0);
       if (count)

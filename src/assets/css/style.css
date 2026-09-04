@@ -151,7 +151,9 @@ img {
   height: 29px;
   border: 1px solid var(--text);
   border-radius: 8px;
-  font: 500 0.63rem var(--mono);
+}
+.brand-mark svg {
+  display: block;
 }
 .sidebar__close {
   display: none !important;
@@ -303,6 +305,82 @@ kbd {
   color: var(--muted-2);
   font: 400 0.58rem var(--mono);
   padding-top: 2px;
+}
+/* Bab dengan sub-bab: barisnya jadi <details> — judul tetap tautan ke bab,
+   chevron di kanan membuka/tutup daftar sub-bab. */
+.toc__summary {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px;
+  align-items: start;
+  padding: 0;
+  border-radius: 9px;
+  cursor: pointer;
+  list-style: none;
+}
+.toc__summary::-webkit-details-marker {
+  display: none;
+}
+.toc__summary:hover {
+  background: var(--panel);
+}
+.toc__chev {
+  display: grid;
+  place-items: center;
+  width: 18px;
+  height: 18px;
+  margin: 5px 4px 0 0;
+  border-radius: 5px;
+  color: var(--muted-2);
+  font: 400 0.55rem var(--sans);
+  transition:
+    transform 0.16s ease,
+    color 0.16s ease;
+}
+.toc__group[open] > .toc__summary .toc__chev {
+  transform: rotate(90deg);
+  color: var(--muted);
+}
+.toc__sub {
+  display: grid;
+  gap: 1px;
+  margin: 1px 0 7px 13px;
+  padding-left: 8px;
+  border-left: 1px solid var(--line);
+}
+/* Baris sub-bab — dipakai bersama oleh sidebar dan kartu bab di beranda. */
+.toc-sub__link {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  padding: 4px 7px;
+  padding-left: calc(9px + (var(--lvl, 1) - 1) * 12px);
+  border-radius: 7px;
+  color: var(--muted);
+}
+.toc-sub__link:hover {
+  background: var(--panel);
+  color: var(--text);
+}
+.toc-sub__label {
+  flex: none;
+  color: var(--muted-2);
+  font: 500 0.58rem var(--mono);
+}
+.toc-sub__title {
+  flex: 1;
+  min-width: 0;
+  font: 500 0.66rem/1.35 var(--sans);
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.toc-sub__meta {
+  flex: none;
+  color: var(--muted-2);
+  font: 400 0.55rem var(--mono);
+  white-space: nowrap;
 }
 .sidebar__bottom {
   display: grid;
@@ -565,8 +643,6 @@ kbd {
   min-height: 174px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 18px;
   padding: 18px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -576,6 +652,14 @@ kbd {
 }
 .chapter-card:hover {
   background: var(--panel);
+}
+.chapter-card__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 18px;
+  min-height: 138px;
 }
 .chapter-card__top,
 .chapter-card__bottom {
@@ -606,6 +690,54 @@ kbd {
 .chapter-card:hover .chapter-card__arrow {
   opacity: 1;
   transform: none;
+}
+/* Dropdown sub-bab di kartu bab (beranda). */
+.chapter-card__toc {
+  margin-top: 15px;
+  padding-top: 11px;
+  border-top: 1px dashed var(--line);
+}
+.chapter-card__toc-summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--muted);
+  font: 500 0.6rem var(--mono);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  user-select: none;
+}
+.chapter-card__toc-summary::-webkit-details-marker {
+  display: none;
+}
+.chapter-card__toc-summary:hover {
+  color: var(--text);
+}
+.chapter-card__toc-chev {
+  color: var(--muted-2);
+  transition: transform 0.18s ease;
+}
+.chapter-card__toc[open] .chapter-card__toc-chev {
+  transform: rotate(90deg);
+  color: var(--muted);
+}
+.chapter-card__toc-body {
+  display: grid;
+  gap: 1px;
+  margin-top: 9px;
+}
+.chapter-card__toc-body .toc-sub__link {
+  padding: 7px 9px;
+}
+.chapter-card__toc-body .toc-sub__title {
+  font: 500 0.76rem/1.4 var(--sans);
+}
+.chapter-card__toc-body .toc-sub__label,
+.chapter-card__toc-body .toc-sub__meta {
+  font-size: 0.6rem;
 }
 .home-footer {
   border-top: 1px solid var(--line);
@@ -979,21 +1111,49 @@ kbd {
   border-radius: 0;
   font-size: 0.82em;
 }
-.annotation table {
-  border-collapse: collapse;
+table {
+  display: block;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-collapse: separate;
+  border-spacing: 0;
   width: 100%;
-  margin: 0 0 1em;
-  font-size: 0.9em;
-}
-.annotation th,
-.annotation td {
+  margin: 0 0 1.4em;
+  font-size: .86em;
   border: 1px solid var(--line);
-  padding: 0.45em 0.65em;
-  text-align: left;
+  border-radius: 10px;
 }
-.annotation th {
+thead th {
   background: var(--bg-soft);
-  font-weight: 600;
+  padding: .7em .9em;
+  border-bottom: 1px solid var(--line);
+  font: 600 .72em var(--sans);
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--muted);
+  text-align: left;
+  white-space: nowrap;
+}
+td {
+  padding: .7em .9em;
+  border-top: 1px solid var(--line);
+  vertical-align: top;
+  font-family: var(--sans);
+  font-size: .95em;
+  line-height: 1.55;
+}
+tbody tr:first-child td {
+  border-top: none;
+}
+tbody tr:nth-child(even) {
+  background: var(--bg-soft);
+}
+tbody tr:hover {
+  background: var(--blue-soft);
+}
+th + th,
+.annotation td + td {
+  border-left: 1px solid var(--line);
 }
 .annotation hr {
   border: none;
@@ -1151,40 +1311,60 @@ kbd {
 .index-tools input:focus {
   border-color: var(--line-strong);
 }
-.annot-entry {
-  display: grid;
-  grid-template-columns: 68px 1fr;
-  gap: 16px;
-  padding: 27px 0;
+.note-group {
+  padding: 22px 0 12px;
   border-bottom: 1px solid var(--line);
 }
-.annot-entry__rail {
-  color: var(--muted);
-  font: 500 0.58rem var(--mono);
-  text-align: right;
+.note-group__head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 7px;
 }
-.annot-entry__rail i {
-  display: block;
-  width: 1px;
-  height: calc(100% - 25px);
-  margin: 11px 3px 0 auto;
-  background: var(--line);
+.note-group__head a {
+  color: var(--text);
+  font: 600 0.78rem/1.3 var(--sans);
+  letter-spacing: -0.01em;
 }
-.annot-entry__body {
-  min-width: 0;
+.note-group__head a:hover {
+  color: var(--blue);
 }
-.annot-entry__chapter {
-  display: inline-block;
-  margin-bottom: 8px;
-  color: var(--muted);
+.note-group__count {
+  color: var(--muted-2);
+  font: 400 0.58rem var(--mono);
+  white-space: nowrap;
+}
+.note-group__rows {
+  display: grid;
+  gap: 1px;
+}
+.note-row {
+  display: flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 9px 9px 9px 6px;
+  border-radius: 9px;
+  color: var(--text);
+}
+.note-row:hover {
+  background: var(--panel);
+}
+.note-row__num {
+  flex: none;
+  min-width: 54px;
+  color: var(--blue);
   font: 500 0.62rem var(--mono);
 }
-.annot-entry__source {
-  max-width: 74ch;
-  margin: 0 0 12px;
+.note-row__text {
+  flex: 1;
+  min-width: 0;
   color: var(--muted);
+  font: 400 0.86rem/1.55 var(--serif);
   font-style: italic;
-  font-size: 0.96rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .empty-state--hidden {
   display: none;
@@ -1565,9 +1745,11 @@ body.modal-open {
   .focus-source .para__text {
     font-size: 1.1rem;
   }
-  .annot-entry {
-    grid-template-columns: 48px 1fr;
-    gap: 9px;
+  .note-row__num {
+    min-width: 42px;
+  }
+  .note-row__text {
+    font-size: 0.8rem;
   }
   .settings-grid {
     grid-template-columns: 1fr;

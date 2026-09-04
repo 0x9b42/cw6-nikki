@@ -7,7 +7,7 @@ permalink: "/{{ chapter.id }}/index.html"
 layout: layouts/base.njk
 eleventyComputed:
   title: "{{ chapter.title }}"
-  description: "Anotasi paragraf demi paragraf untuk {{ chapter.title }}, dari {{ site.workTitle }} karya {{ site.workAuthor }}."
+  description: "Membaca {{ chapter.title }}, dari {{ site.workTitle }} karya {{ site.workAuthor }}."
 ---
 <article
   class="page page--reading"
@@ -42,7 +42,7 @@ eleventyComputed:
       {% if item.type == "heading" %}
         {% if item.level == 1 %}
           <h2
-            id="section-{{ loop.index }}"
+            id="{{ item.id }}"
             class="section-heading section-heading--level-1"
           >
             <span>{{ item.label }}</span>
@@ -51,7 +51,7 @@ eleventyComputed:
         {% endif %}
         {% if item.level == 2 %}
           <h3
-            id="section-{{ loop.index }}"
+            id="{{ item.id }}"
             class="section-heading section-heading--level-2"
           >
             <span>{{ item.label }}</span>
@@ -60,7 +60,7 @@ eleventyComputed:
         {% endif %}
         {% if item.level >= 3 %}
           <h4
-            id="section-{{ loop.index }}"
+            id="{{ item.id }}"
             class="section-heading section-heading--level-3"
           >
             <span>·</span>
